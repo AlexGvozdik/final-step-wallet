@@ -1,9 +1,9 @@
-.aside {
+.sideBar {
     margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {
-  .sidebar {
+  .sideBar {
     display: flex;
     margin-bottom: 20px;
     justify-content: space-between;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .sidebar {
+  .sideBar {
     flex-direction: column;
     justify-content: flex-start;
     padding: 0px 70px 0px 0px;

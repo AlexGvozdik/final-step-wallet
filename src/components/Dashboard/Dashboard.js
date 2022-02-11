@@ -3,7 +3,7 @@ import s from './Dashboard.module.css'
 
 export default function DashBoard() {
     return (
-        <aside className={s.aside}>
+        <aside className={s.sideBar}>
             <NavMenu/>
       </aside>
   )
