@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ExchangeRateIcon, HomeIcon, StatisticIcon } from './BtnIcon';
 
 import { NavLink } from 'react-router-dom';
@@ -15,7 +15,7 @@ const menuItems = [
 ];
 
 const NavMenu = () => {
-  const [checked, setChecked] = useState('Main');
+  
 
   return (
     <ul className={s.navList}>
