@@ -1,8 +1,5 @@
-import NavMenu from "../Navigation/Navigation";
-
+import NavMenu from '../Navigation/Navigation';
 
 export default function DashBoard() {
-    return (
-        <NavMenu/>
-    )
+  return <NavMenu />;
 }

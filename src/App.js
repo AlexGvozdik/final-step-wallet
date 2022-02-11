@@ -1,13 +1,12 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import DashBoard from "./components/Dashboard/Dashboard";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import DashBoard from './components/Dashboard/Dashboard';
 const App = () => {
-    return (
-        <>
-            <DashBoard/>
-           
-      </>
-    );
+  return (
+    <>
+      <DashBoard />
+    </>
+  );
 };
 
 export default App;

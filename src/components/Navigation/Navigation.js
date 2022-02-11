@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { ListItemIcon, ListItemText } from '@mui/material';
 import { ExchangeRateIcon, HomeIcon, StatisticIcon } from './BtnIcon';
-// import { StyledListItem, StyledNavMenu } from './NavMenu.style';
+
 import { NavLink } from 'react-router-dom';
-import s from './Navigation.module.css'
+import s from './Navigation.module.css';
 
 function createMenuData(Icon, MenuName, Path) {
   return { Icon, MenuName, Path };
@@ -20,12 +19,8 @@ const NavMenu = () => {
 
   return (
     <ul className={s.navList}>
-      {menuItems.map((menuItem) => (
-        <li className={s.navItem}
-          key={menuItem.MenuName}
-          checked={checked === menuItem.MenuName}
-          onClick={() => setChecked(menuItem.MenuName)}
-        >
+      {menuItems.map(menuItem => (
+        <li className={s.navItem} key={menuItem.MenuName}>
           {/* <NavLink
             to={menuItem.Path}
             style={{
@@ -35,8 +30,8 @@ const NavMenu = () => {
               alignItems: 'center',
             }}
           > */}
-            <ListItemIcon className={s.icon}>{menuItem.Icon}</ListItemIcon>
-            <ListItemText primary={menuItem.MenuName} />
+          <div className={s.icon}>{menuItem.Icon}</div>
+          <div>{menuItem.MenuName} </div>
           {/* </NavLink> */}
         </li>
       ))}
