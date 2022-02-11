@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import DashBoard from './components/Dashboard/Dashboard';
+import MainView from './views/MainView/MainView';
+
 const App = () => {
   return (
     <>
-      <DashBoard />
+      <MainView/>
     </>
   );
 };

@@ -31,7 +31,7 @@ const NavMenu = () => {
             }}
           > */}
           <div >{menuItem.Icon}</div>
-          <div className={s.navText}>{menuItem.MenuName} </div>
+          <span className={s.navText}>{menuItem.MenuName} </span>
           {/* </NavLink> */}
         </li>
       ))}
