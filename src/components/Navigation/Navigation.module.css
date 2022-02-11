@@ -1,0 +1,23 @@
+.navList{
+     display: inline-flex;
+      flex-wrap:wrap;
+      flex-direction: column;
+      padding-top: 0;
+      padding-bottom: 0;
+}
+
+.navItem {
+     width: auto;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+     
+}
+.navItem:not(:first-child) {
+    margin-top: 10px;
+}
+
+.icon {
+    fill: #6e78e8;
+}
