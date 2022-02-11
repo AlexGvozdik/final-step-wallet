@@ -1,0 +1,22 @@
+.aside {
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+   
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sidebar {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0px 70px 0px 0px;
+  }
+}

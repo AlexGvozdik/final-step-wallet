@@ -30,8 +30,8 @@ const NavMenu = () => {
               alignItems: 'center',
             }}
           > */}
-          <div className={s.icon}>{menuItem.Icon}</div>
-          <div>{menuItem.MenuName} </div>
+          <div >{menuItem.Icon}</div>
+          <div className={s.navText}>{menuItem.MenuName} </div>
           {/* </NavLink> */}
         </li>
       ))}
