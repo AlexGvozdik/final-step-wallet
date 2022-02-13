@@ -9,14 +9,12 @@ function createMenuData(Icon, MenuName, Path) {
 }
 
 const menuItems = [
-  createMenuData(<HomeIcon />, 'Main', '/main'),
-  createMenuData(<StatisticIcon />, 'Statistics', '/statistic'),
+  createMenuData(<HomeIcon />, 'Главная', '/main'),
+  createMenuData(<StatisticIcon />, 'Статистика', '/statistic'),
   createMenuData(<ExchangeRateIcon />, 'Exchange rate', '/'),
 ];
 
 const NavMenu = () => {
-  
-
   return (
     <ul className={s.navList}>
       {menuItems.map(menuItem => (
@@ -30,7 +28,7 @@ const NavMenu = () => {
               alignItems: 'center',
             }}
           > */}
-          <div >{menuItem.Icon}</div>
+          <div>{menuItem.Icon}</div>
           <span className={s.navText}>{menuItem.MenuName} </span>
           {/* </NavLink> */}
         </li>
