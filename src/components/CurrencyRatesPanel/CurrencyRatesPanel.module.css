@@ -1,0 +1,43 @@
+.currencyConteiner {
+  width: 348px;
+  height: 347px;
+  border-radius: 30px;
+  background-color: #4a56e2;
+  background-image: url(../../images/currency-back.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  color: #ffffff;
+
+  font-family: Circe;
+}
+
+.currencyName {
+  display: flex;
+  padding: 17px 30px 17px 30px;
+  justify-content: space-between;
+
+  background-image: url(../../images/currencyTop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.currencyList {
+  padding: 20px 30px 20px 30px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.currencyItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currencyItem:not(:last-child) {
+  margin-bottom: 23px;
+}
