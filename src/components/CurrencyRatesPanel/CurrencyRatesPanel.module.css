@@ -1,11 +1,12 @@
 .currencyConteiner {
-  width: 348px;
-  height: 347px;
+  width: 280px;
+  height: 174px;
   border-radius: 30px;
   background-color: #4a56e2;
-  background-image: url(../../images/currency-back.svg);
+  background-image: url(../../images/currency-back-mob.svg);
   background-repeat: no-repeat;
   background-position: bottom;
+  background-size: contain;
   color: #ffffff;
 
   font-family: Circe;
@@ -13,7 +14,7 @@
 
 .currencyName {
   display: flex;
-  padding: 17px 30px 17px 30px;
+  padding: 11px 20px 12px 20px;
   justify-content: space-between;
 
   background-image: url(../../images/currencyTop.svg);
@@ -26,7 +27,7 @@
 }
 
 .currencyList {
-  padding: 20px 30px 20px 30px;
+  padding: 10px 20px 10px 20px;
 
   font-size: 16px;
   font-weight: 400;
@@ -39,5 +40,35 @@
 }
 
 .currencyItem:not(:last-child) {
-  margin-bottom: 23px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .currencyConteiner {
+    width: 334px;
+    height: 174px;
+
+    background-image: url(../../images/currency-back-tabl.svg);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .currencyConteiner {
+    width: 348px;
+    height: 347px;
+
+    background-image: url(../../images/currency-back-desk.svg);
+  }
+
+  .currencyName {
+    padding: 17px 30px 16px 30px;
+  }
+
+  .currencyList {
+    padding: 20px 30px 20px 30px;
+  }
+
+  .currencyItem:not(:last-child) {
+    margin-bottom: 23px;
+  }
 }

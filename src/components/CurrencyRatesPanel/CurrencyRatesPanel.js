@@ -25,7 +25,7 @@ function CurrencyRatesPanel() {
         </div>
         <ul className={s.currencyList}>
           {currency.map((currency) => (
-            <li className={s.currencyItem}>
+            <li className={s.currencyItem} key={currency.ccy}>
               <p>{currency.ccy}</p>
               <p>{Number(currency.buy).toFixed(2)}</p>
               <p>{Number(currency.sale).toFixed(2)}</p>
