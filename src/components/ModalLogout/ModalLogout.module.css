@@ -1,12 +1,5 @@
-/* .modalLogout {
-  max-width: 280px;
-  height: 174px;
-
-  background-color: aqua;
-  border-radius: 20px;
-} */
-
 .modalLogoutConteiner {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +9,7 @@
   background-color: aqua;
   border-radius: 20px;
 
-  padding: 20px 20px;
+  padding: 20px;
 
   text-align: center;
   font-family: "Circe", sans-serif;
@@ -31,10 +24,6 @@
 .logoutText {
   margin-bottom: 20px;
   font-size: 12px;
-}
-
-.buttonGroup {
-  /* margin-top: auto; */
 }
 
 .logoutButton {
@@ -60,4 +49,27 @@
   border-radius: 20px;
 
   color: #4a56e2;
+}
+
+.buttonClose {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .modalLogoutConteiner {
+    min-width: 540px;
+    height: 540px;
+
+    /* padding: 40px; */
+  }
 }
