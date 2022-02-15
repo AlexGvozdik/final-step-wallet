@@ -1,0 +1,63 @@
+/* .modalLogout {
+  max-width: 280px;
+  height: 174px;
+
+  background-color: aqua;
+  border-radius: 20px;
+} */
+
+.modalLogoutConteiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 280px;
+  height: 174px;
+
+  background-color: aqua;
+  border-radius: 20px;
+
+  padding: 20px 20px;
+
+  text-align: center;
+  font-family: "Circe", sans-serif;
+}
+
+.logoutHeader {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.logoutText {
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.buttonGroup {
+  /* margin-top: auto; */
+}
+
+.logoutButton {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 180px;
+  height: 35px;
+
+  background-color: #24cca7;
+  border: 1px solid transparent;
+  border-radius: 20px;
+
+  color: #ffffff;
+}
+
+.cancelButton {
+  display: inline-block;
+  width: 180px;
+  height: 35px;
+
+  background-color: #ffffff;
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+
+  color: #4a56e2;
+}
