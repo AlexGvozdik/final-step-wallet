@@ -1,0 +1,21 @@
+.chart {
+  position: relative;
+
+  width: 320px;
+}
+
+@media screen and (max-width: 767px) {
+  .chart {
+    width: 280px;
+  }
+}
+
+.sum {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 18px;
+  line-height: 1.5px;
+}
