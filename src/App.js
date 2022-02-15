@@ -1,5 +1,4 @@
 import React from "react";
-import CurrencyRatesPanel from "./components/CurrencyRatesPanel/CurrencyRatesPanel";
 const App = () => {
   return (
     <>
