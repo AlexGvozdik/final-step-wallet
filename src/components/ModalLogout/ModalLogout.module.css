@@ -1,18 +1,16 @@
-.modalLogoutConteiner {
+.modal {
   position: relative;
+  width: 280px;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+.modalLogoutConteiner {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 280px;
-  height: 174px;
-
-  background-color: aqua;
-  border-radius: 20px;
-
+  align-items: center;
   padding: 20px;
 
   text-align: center;
-  font-family: "Circe", sans-serif;
 }
 
 .logoutHeader {
@@ -27,7 +25,7 @@
 }
 
 .logoutButton {
-  display: inline-block;
+  display: block;
   margin-bottom: 10px;
   width: 180px;
   height: 35px;
@@ -40,7 +38,7 @@
 }
 
 .cancelButton {
-  display: inline-block;
+  display: block;
   width: 180px;
   height: 35px;
 
@@ -66,10 +64,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modalLogoutConteiner {
-    min-width: 540px;
-    height: 540px;
-
-    /* padding: 40px; */
+  .modal {
+    width: 340px;
   }
 }
