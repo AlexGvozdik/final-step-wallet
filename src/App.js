@@ -1,9 +1,10 @@
 import React from "react";
-import CurrencyRatesPanel from "./components/CurrencyRatesPanel/CurrencyRatesPanel";
+import DiagramTab from "./components/DiagramTab/DiagramTab";
 const App = () => {
   return (
     <>
       <div>Hello Blended_3!!!</div>
+      <DiagramTab />
     </>
   );
 };
