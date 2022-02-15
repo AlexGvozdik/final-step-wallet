@@ -1,4 +1,4 @@
-@import '../../stylesheet/breakpoints';
+/* @import '../../stylesheet/breakpoints'; */
 
 li {
   list-style-type: none;
@@ -34,11 +34,11 @@ ul {
   font-size: 16px;
   line-height: 24px;
   outline: none;
-
-  &:nth-child(n) {
-    padding-right: 19px;
-  }
 }
+.select:nth-child(n) {
+  padding-right: 19px;
+}
+
 
 .categoryContainer {
   display: block;
