@@ -1,4 +1,7 @@
 .sideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* margin: 13px 0 0 67px; */
 }
 
@@ -7,7 +10,7 @@
     display: flex;
     margin-bottom: 20px;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     width: 100%;
     margin: 35px 0 0 43px;
     max-width: 688px;

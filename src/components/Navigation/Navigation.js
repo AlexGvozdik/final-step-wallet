@@ -28,7 +28,7 @@ const NavMenu = () => {
               alignItems: 'center',
             }}
           > */}
-          <div>{menuItem.Icon}</div>
+          <div className={s.btnIcon}>{menuItem.Icon}</div>
           <span className={s.navText}>{menuItem.MenuName} </span>
           {/* </NavLink> */}
         </li>
