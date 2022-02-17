@@ -5,7 +5,7 @@ import"@pnotify/core/dist/BrightTheme.css";
 import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {setIsModalAddTransactionOpen} from '../modalAddTransaction/modal-actions'
+import {setIsModalAddTransactionOpen} from './transactions-actions'
 
 
 axios.defaults.baseURL = 'https://final-step-wallet-back.herokuapp.com';
@@ -38,7 +38,6 @@ export const addTransaction = createAsyncThunk(
         dispatch(setIsModalAddTransactionOpen(false));
         return data;
       } catch (error) {
-        console.log(error)
         showAsyncErrorNotification('Oops, something went wrong');
         return rejectWithValue(error.message);
       }

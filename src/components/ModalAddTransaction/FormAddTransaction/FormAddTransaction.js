@@ -12,10 +12,9 @@ import s from './FormAddTransaction.module.css';
 import { CustomSelect, StyledOption } from './styled';
 import { getIsLoading } from '../../../redux/transactions/transactions-selectors';
 import { addTransaction } from '../../../redux/transactions/transactions-operations';
-import { setIsModalAddTransactionOpen } from '../../../redux/modalAddTransaction/modal-actions';
+import { setIsModalAddTransactionOpen } from '../../../redux/transactions/transactions-actions';
 
 const CATEGORIES = [{eng: 'main', ru: 'Основной'}, {eng: 'food', ru: 'Еда'}, {eng: 'car', ru: 'Авто'}, {eng: 'development', ru: 'Развитие'}, {eng: 'children', ru: 'Дети'}, {eng: 'home', ru: 'Дом'}, {eng: 'education', ru: 'Образование'},  {eng: 'other', ru: 'Остальные'}]
-
 
 export default function FormAddTransaction() {
   const initialValues = {
@@ -28,7 +27,6 @@ export default function FormAddTransaction() {
   const [type, setType] = useState(false);
   const [category, setCategory] = useState('');
   const [date, setDate] = useState(() => new Date());
-
 
   const yesterday = moment().subtract( 1, 'day' );
 
@@ -96,11 +94,15 @@ export default function FormAddTransaction() {
                 style={category ? {color: '#000'} : {color: '#BDBDBD'}} 
                 defaultValue={'Выберите категорию'} 
                 onChange={setCategory}
-                name='categories'  >
-            <StyledOption style={{display: 'none'}} disabled={true} value={'Выберите категорию'}>Выберите категорию</StyledOption>
-          {CATEGORIES.map(({eng, ru}) => (
-            <StyledOption key={eng} value={eng}>{ru}</StyledOption>
-          ))}
+                name='categories'>
+                  <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}>
+                    <StyledOption style={{display: 'none'}} disabled={true} value={'Выберите категорию'}>Выберите категорию</StyledOption>
+                  {CATEGORIES.map(({eng, ru}) => (
+                    <StyledOption key={eng} value={eng}>{ru}</StyledOption>
+                  ))}
+                  </motion.div>
             </CustomSelect>
         </div>}
         <label className={s.inputWrapper}>
@@ -139,12 +141,13 @@ export default function FormAddTransaction() {
             <button type='submit'className={(dirty && isValid && !type && category) || (dirty && isValid && type) ? s.button : classNames(s.disabled, s.button) } disabled={(!dirty && !isValid && type && !category) || (!dirty && !isValid && !type)}>Добавить
                 <Oval
                   color="#4A56E2"
-                  secondaryColor="gray"
-                  height={18}
+                  secondaryColor="#cecece"
+                  height={20}
                   visible={isLoading}
-                  width={18}
+                  width={20}
                   strokeWidth={5}
                   ariaLabel='loading'
+                  wrapperClass={s.loader}
                 />
               </button>
           <button type='button' className={classNames(s.button, s.white)} onClick={() => dispatch(setIsModalAddTransactionOpen(false))}>Отмена</button>

@@ -81,7 +81,6 @@ border-bottom: none;
 
 const StyledPopper = styled(PopperUnstyled)`
 z-index: 1;
-transition: 50ms linear;
 `;
 
 

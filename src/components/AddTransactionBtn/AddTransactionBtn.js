@@ -1,7 +1,7 @@
 import s from './AddTransactionBtn.module.css';
 import {ReactComponent as AddIcon} from '../../images/plus-icon.svg'
 import { useDispatch } from 'react-redux';
-import { setIsModalAddTransactionOpen } from '../../redux/modalAddTransaction/modal-actions';
+import { setIsModalAddTransactionOpen } from '../../redux/transactions/transactions-actions';
 
 export default function AddTransactionBtn() {
   const { button, icon } = s;
