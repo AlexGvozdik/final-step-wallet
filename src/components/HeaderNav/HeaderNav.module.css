@@ -1,0 +1,232 @@
+.navigation_title_button {
+  display: none;
+}
+
+.navigation_container {
+  max-width: 320px;
+  display: flex;
+  min-width: 280px;
+  margin-top: 15px;
+}
+
+.navigation_row {
+  display: flex;
+  height: inherit;
+}
+
+.navigation_header_wallet {
+  display: block;
+  margin-right: 5px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+.navigation_header {
+  display: flex;
+  color: #bdbdbd;
+  margin-top: 15px;
+  margin-left: auto;
+}
+
+.navigation_header_title {
+  font-family: Circe, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: right;
+  color: #bdbdbd;
+}
+
+.navigation_header_span {
+  display: none;
+}
+
+.navigation_header_logout {
+  display: none;
+}
+
+.wallet {
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.wallet::before {
+  content: url("../../images/wallet.svg");
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.navigation_icon_button_exit {
+  border: none;
+  background-color: white;
+}
+
+.navigation_icon_button_exit::before {
+  content: url("../../images/exit-icon.svg");
+  width: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation_title_button {
+    font-family: Circe, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #bdbdbd;
+    margin-left: 5px;
+    display: block;
+  }
+
+  .navigation_container {
+    max-width: 768px;
+    height: 80px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #fff;
+    margin-top: 0px;
+    border: none;
+    padding: 0px 40px;
+  }
+  .navigation_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+  }
+
+  .wallet {
+    margin-left: 0px;
+  }
+
+  .navigation_header_wallet {
+    display: block;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+  .navigation_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #bdbdbd;
+  }
+
+  .navigation_header_title {
+    font-family: Circe, sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 14px;
+    color: #bdbdbd;
+  }
+
+  .navigation_header_span {
+    content: "";
+    height: 27px;
+    width: 2px;
+    background: #bdbdbd;
+    float: left;
+    margin-right: 10px;
+    display: block;
+  }
+
+  .navigation_header_logout {
+    color: #bdbdbd;
+    border: none;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+  }
+
+  .navigation_icon_wallet {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+
+  .navigation_icon_button_exit {
+    display: flex;
+    background-color: white;
+    border: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wallet {
+    font-family: Poppins, sans-serif;
+    font-size: 30px;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-left: 20px;
+  }
+
+  .navigation_container {
+    max-width: 1280px;
+    height: 80px;
+    margin: auto;
+  }
+
+  .navigation_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+  }
+  .navigation_header_wallet {
+    display: block;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+  .navigation_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #bdbdbd;
+  }
+
+  .navigation_header_title {
+    margin-right: 14px;
+    color: #bdbdbd;
+    font-family: Circe;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .navigation_header_logout {
+    color: #bdbdbd;
+    border: none;
+
+    background-color: white;
+  }
+
+  .navigation_icon_wallet {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+}
