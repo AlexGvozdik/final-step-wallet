@@ -5,7 +5,6 @@ import Header from "./components/HeaderNav/HeaderNav";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { authOperations } from "./redux/auth";
-import Chart from "./components/Chart/Chart";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +19,6 @@ const App = () => {
         <Route path="/" exact element={<Header />} />
         <Route path="/login" element={<LoginView />} />
       </Routes>
-      <Chart />
     </div>
   );
 };

@@ -28,7 +28,7 @@ function ModalLogout({ toggleModal, showModal, logout }) {
           </div>
         </div>
         <button type="button" className={s.buttonClose} onClick={toggleModal}>
-          <img src={iconClose} width="14px" height="14px" />
+          <img src={iconClose} width="14px" height="14px" alt="cross" />
         </button>
       </div>
     </Backdrop>
