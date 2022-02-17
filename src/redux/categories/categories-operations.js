@@ -8,11 +8,12 @@ import {
 
 axios.defaults.baseURL = "https://final-step-wallet-back.herokuapp.com";
 
-export const getCategories = () => async (dispatch) => {
+export const getCategories = () => async () => {
   dispatch(getCategoryRequest());
 
   try {
     const { data } = await axios.get("/api/categories");
+    console.log(data);
     dispatch(getCategorySuccess(data.response.categories));
   } catch (error) {
     dispatch(getCategoryError(error.message));
