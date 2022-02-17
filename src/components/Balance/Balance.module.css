@@ -1,58 +1,60 @@
 .wrapper {
-  height: 80px;
-  /* padding: 8px 40px 13px; */
-  min-width: 280px;
-  margin-bottom: 30px;
+      height: 80px;
+     /* padding: 8px 40px 13px; */
+      min-width: 280px;
+      margin-bottom: 30px;
+    
+      background: green;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+    
+      
+    }
+    
+    @media screen and (min-width: 768px) {
+      .wrapper{
+           min-width: 334px;
+      margin-bottom: 0px;
+      }
+   
+    }
+  
+    @media screen and (min-width: 1280px) {
+      .wrapper{
+      min-width: 350px;
+      margin-bottom: 30px;}
+    }
 
-  background: #fff;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-@media screen and (min-width: 768px) {
-  .wrapper {
-    min-width: 334px;
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .wrapper {
-    min-width: 350px;
-    margin-bottom: 30px;
-  }
-}
-
-.title {
-  text-align: start;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.5;
-  text-transform: uppercase;
-  margin: 0;
-  margin-left: 30px;
-
-  color: #a6a6a6;
-}
-
-.text {
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 1.5;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  margin-left: 30px;
-
-  color: #000000;
-}
-
-.currency {
-  font-weight: 300;
-  margin-right: 10px;
-}
+    .title {
+      text-align: start;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      margin: 0;
+      margin-left: 30px;
+    
+      color: #a6a6a6;
+    }
+    
+    .text {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      margin-left: 30px;
+    
+      color: #000000;
+    }
+    
+    .currency {
+      font-weight: 300;
+      margin-right: 10px;
+    }

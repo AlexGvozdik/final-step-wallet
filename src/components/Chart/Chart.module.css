@@ -1,12 +1,14 @@
 .chart {
   position: relative;
 
-  width: 320px;
+  margin: 0px auto 30px auto;
+  max-width: 280px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 767px) {
   .chart {
-    width: 280px;
+    width: 320px;
+    margin: 0px 0px 30px 0px;
   }
 }
 

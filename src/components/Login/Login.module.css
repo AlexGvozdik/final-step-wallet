@@ -1,0 +1,181 @@
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.mainDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 568px;
+  background-color: #fff;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.wallet {
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.wallet::before {
+  content: url("../../images/wallet.svg");
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.labelsDivFirst {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+.labelsDivSecond {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.input {
+  width: 260px;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  outline: none;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 30px;
+  font-size: 18px;
+  height: 16px;
+  color: #bdbdbd;
+}
+
+.input:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.email {
+  height: 16px;
+  background-image: url("../../images/email-icon.svg");
+  background-repeat: no-repeat;
+}
+
+.password {
+  height: 16px;
+  background-image: url("../../images/password-icon.svg");
+  background-repeat: no-repeat;
+}
+
+.span {
+  color: #ff0000;
+  margin-top: 7px;
+}
+
+::placeholder {
+  font-family: Circe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #bdbdbd;
+}
+
+.wrapperBtn {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button {
+  font-family: Circe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  border: solid #24cca7;
+  outline: none;
+  letter-spacing: 0.1em;
+}
+
+.enter,
+.enter:active {
+  background-color: #24cca7;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.register {
+  border: 1px solid #4a56e2;
+  color: #4a56e2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: Circe, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.enter:hover,
+.enter:active {
+  background-color: 4a56e2;
+  border: 1px solid 4a56e2;
+}
+
+.register:hover,
+.register:active {
+  color: #00ffff;
+  border: 1px solid #00ffff;
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    width: 410px;
+  }
+
+  .wrapperBtn {
+    margin-left: 80px;
+  }
+
+  .mainDiv {
+    width: 540px;
+    height: 468px;
+    border-radius: 20px;
+    margin-left: 114px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainDiv {
+    z-index: 1;
+    margin-top: 136px;
+    margin-left: 0px;
+  }
+  .button {
+    width: 300px;
+  }
+}

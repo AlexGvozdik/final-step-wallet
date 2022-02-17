@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import balanceSelectors from '../../redux/balance/balance-selectors';
-
-import styles from './Balance.module.css';
+import styles from "./Balance.module.css";
 
 const Balance = () => {
   // const userBalance = useSelector(balanceSelectors.getBalance);
