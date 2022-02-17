@@ -11,7 +11,12 @@ import { addTransaction } from './transactions-operations';
     [addTransaction.rejected]: () => false,
   }); 
 
+  const isModalAddTransactionOpen = createReducer(false, {
+    'transactions/setIsModalAddTransactionOpen': (_, { payload }) => payload,
+  });
+
   export const transactionsReducer = combineReducers({
     items,
     isLoading,
+    isModalAddTransactionOpen
   });

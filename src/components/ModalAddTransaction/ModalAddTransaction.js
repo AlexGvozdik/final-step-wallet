@@ -3,10 +3,11 @@ import {AnimateSharedLayout} from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {ReactComponent as CrossIcon} from '../../images/modal-close-icon.svg'
-import { getIsModalAddTransactionOpen } from '../../redux/modalAddTransaction/modal-selectors';
-import { setIsModalAddTransactionOpen } from '../../redux/modalAddTransaction/modal-actions';
-import sBut from './FormAddTransaction/FormAddTransaction.module.css';
-import s from './ModalAddTransaction.module.css'
+import { getIsModalAddTransactionOpen } from '../../redux/transactions/transactions-selectors';
+import { setIsModalAddTransactionOpen } from '../../redux/transactions/transactions-actions';
+import s from './ModalAddTransaction.module.css';
+import s2 from './FormAddTransaction/FormAddTransaction.module.css'
+
 import FormAddTransaction from './FormAddTransaction/FormAddTransaction'
 import './transition.css';
 
@@ -27,7 +28,7 @@ export default function Modal() {
         overlayClassName={backdrop} 
         onRequestClose={() => dispatch(setIsModalAddTransactionOpen(false))}> 
         <FormAddTransaction/>
-        <CrossIcon className={sBut.closeBtn} onClick={() => {dispatch(setIsModalAddTransactionOpen(false))}} ></CrossIcon>
+        <CrossIcon onClick={() => {dispatch(setIsModalAddTransactionOpen(false))}} className={s2.closeBtn}></CrossIcon>
         </ReactModal>
         </AnimateSharedLayout>
     )

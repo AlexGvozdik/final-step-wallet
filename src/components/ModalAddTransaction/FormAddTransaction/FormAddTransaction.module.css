@@ -150,7 +150,6 @@ input:checked + .slider:before {
     right: 10px;
     background-image: url('../../../images/categories-list-icon.svg');
     background-repeat: no-repeat;
-    cursor: pointer;
     pointer-events: none;
 }
 
@@ -264,14 +263,13 @@ input:checked + .slider:before {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    /* display: block; */
+    position: relative;
     max-width: 300px;
     width: 100%;
     height: 50px;
     font-family: 'Circe', sans-serif;
     font-size: 18px;
     line-height: 27px;
-    text-align: center;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -304,6 +302,14 @@ input:checked + .slider:before {
     color: #4A56E2;
     background-color: #fff;
     border: 1px solid #4A56E2;
+    transition: 250ms linear;
+}
+
+.button.white:hover,
+.button.white:focus {
+    background-color: #4A56E2;
+    color: #fff;
+    transition: 250ms linear;
 }
 
 .error {
@@ -328,6 +334,14 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.loader {
+    position: absolute;
+    top: 50%;
+    right: 18%;
+    transform: translateY(-50%);
+}
+
 
 
 
