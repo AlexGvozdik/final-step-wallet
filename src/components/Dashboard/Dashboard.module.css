@@ -1,0 +1,28 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 13px 0 0 67px; */
+}
+
+@media screen and (min-width: 768px) {
+  .sideBar {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin: 35px 0 0 43px;
+    max-width: 688px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sideBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 70px 0px 0px;
+    margin: 45px 0 0 88px;
+    max-width: 465px;
+  }
+}

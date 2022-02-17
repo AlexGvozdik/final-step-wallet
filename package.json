@@ -32,6 +32,7 @@
     "react-scripts": "5.0.0",
     "react-svg": "^14.1.10",
     "redux-persist": "^6.0.0",
+    "sass": "^1.49.7",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
@@ -42,7 +43,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
+    "deploy": "netlify deploy -p",
+    "format": "npx prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -61,5 +63,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
   }
 }

@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import MainView from './views/MainView/MainView';
+import NotFoundView from './views/NotFoundView/NotFoundView';
 import { Routes, Route } from "react-router-dom";
 import LoginView from "./views/LoginView";
 import Header from "./components/HeaderNav/HeaderNav";
@@ -14,12 +16,15 @@ const App = () => {
   }, [dispatch]);
 
   return (
+    <>
+      <MainView />
     <div>
       <Routes>
         <Route path="/" exact element={<Header />} />
         <Route path="/login" element={<LoginView />} />
       </Routes>
     </div>
+    </>
   );
 };
 
