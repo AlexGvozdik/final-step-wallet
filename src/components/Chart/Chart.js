@@ -1,7 +1,11 @@
 import { Doughnut } from "react-chartjs-2";
 
 import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
+
 import s from "./Chart.module.css";
+
+import { useSelector } from "react-redux";
+import authSelectors from "../../redux/categories/categories-selectors";
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -36,6 +40,9 @@ const data = {
   ],
 };
 function Chart() {
+  const categories = useSelector(authSelectors.getAllUserCategory);
+  console.log(categories);
+
   return (
     <div className={s.chart}>
       <Doughnut data={data} options={{ cutout: "75%" }} />
