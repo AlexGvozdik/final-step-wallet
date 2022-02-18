@@ -1,21 +1,34 @@
+import React from "react";
 import Backdrop from "@mui/material/Backdrop";
 import s from "./ModalLogout.module.css";
 import iconClose from "../../images/close.svg";
+import { NavLink } from "react-router-dom";
 
-function ModalLogout() {
+function ModalLogout({ toggleModal, showModal, logout }) {
   return (
-    <Backdrop open="true">
+    <Backdrop open={showModal}>
       <div className={s.modal}>
         <div className={s.modalLogoutConteiner}>
           <h2 className={s.logoutHeader}>Выход из личного кабинета</h2>
           <p className={s.logoutText}>Вы действительно хотите выйти?</p>
           <div>
-            <button className={s.logoutButton}>Выйти</button>
-            <button className={s.cancelButton}>Отменить</button>
+            <NavLink to="/login" style={{ textDecoration: "none" }}>
+              <button type="submit" className={s.logoutButton} onClick={logout}>
+                Выйти
+              </button>
+            </NavLink>
+
+            <button
+              type="button"
+              className={s.cancelButton}
+              onClick={toggleModal}
+            >
+              Отменить
+            </button>
           </div>
         </div>
-        <button className={s.buttonClose}>
-          <img src={iconClose} width="14px" height="14px" />
+        <button type="button" className={s.buttonClose} onClick={toggleModal}>
+          <img src={iconClose} width="14px" height="14px" alt="cross" />
         </button>
       </div>
     </Backdrop>
