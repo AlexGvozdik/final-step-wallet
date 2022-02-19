@@ -1,11 +1,11 @@
 import { useState, useCallback } from "react";
 import Select from "react-select";
 
-import styles from "./Table.module.scss";
+import styles from "./Table.module.css";
 import {
   monthInitial,
   yearInitial,
-} from "../../assets/data/select-data/selectData";
+} from "../../../../data/selectData";
 const colourStyles = {
   placeholder: (base) => ({
     ...base,
