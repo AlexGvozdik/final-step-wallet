@@ -30,6 +30,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-select": "^5.2.2",
     "react-svg": "^14.1.10",
     "redux-persist": "^6.0.0",
     "sass": "^1.49.7",
