@@ -65,8 +65,8 @@ function RegisterForm() {
     }
   };
 
-  async function handleSubmit() {
-    // e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
     try {
       await validate(
         { name, email, password, password_confirmation },
