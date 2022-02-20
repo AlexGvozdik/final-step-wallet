@@ -1,6 +1,6 @@
 import Chart from '../Chart/Chart';
 import s from './DiagramTab.module.css';
-import Table from './Table';
+// import Table from './Table';
 
 function DiagramTab() {
   return (
@@ -9,7 +9,7 @@ function DiagramTab() {
       <div className={s.diagramTabConteiner}>
         <Chart />
       </div>
-      <Table />
+      {/* <Table /> */}
     </div>
   );
 }

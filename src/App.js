@@ -7,7 +7,6 @@ import Header from './components/HeaderNav/HeaderNav';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { authOperations } from './redux/auth';
-import DiagramTab from './components/DiagramTab/DiagramTab';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,7 +24,6 @@ const App = () => {
           <Route path="/login" element={<LoginView />} />
         </Routes>
       </div>
-      <DiagramTab />
     </>
   );
 };
