@@ -77,9 +77,9 @@ function RegisterForm() {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-    } catch (error) {
+    } catch (er) {
       alert({
-        text: error[0].message,
+        text: er[0].message,
         hide: true,
         delay: 2000,
         sticker: false,
