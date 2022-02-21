@@ -10,8 +10,6 @@ defaults.styling = "material";
 defaults.icon = "material";
 defaults.delay = 1000;
 
-// import { PasswordStrenght } from "./ProgressBar";
-
 function RegisterForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -79,9 +77,9 @@ function RegisterForm() {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-    } catch (er) {
+    } catch (error) {
       alert({
-        text: er[0].message,
+        text: error[0].message,
         hide: true,
         delay: 2000,
         sticker: false,
@@ -99,6 +97,9 @@ function RegisterForm() {
         </div>
         <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
           <label className={s.formLbl}>
+            {/* <span className={s.mail}>
+              <i className={s.mailIcon}></i>
+            </span> */}
             <input
               type="email"
               name="email"
@@ -106,6 +107,7 @@ function RegisterForm() {
               // required
               onChange={handleChange}
               className={`${s.inputLbl} ${s.mail}`}
+              // className={s.inputLbl}
               placeholder="E-mail"
             ></input>
           </label>
@@ -122,17 +124,12 @@ function RegisterForm() {
               required
               autoComplete="off"
             ></input>
-            {/* <input
-              id="inputcheck"
-              autoComplete="off"
-              type="password"
-              name="password"
-              value={password}
-              // required
-              onChange={handleChange}
-              className={`${s.inputLbl} ${s.password}`}
-              placeholder="Пароль"
-            ></input> */}
+            {/* <svg width="16" height="21" className={s.inputIcon}>
+              <path
+                d="M14 7h-1V5c0-2.76-2.24-5-5-5S3 2.24 3 5v2H2C.9 7 0 7.9 0 9v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2Zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Zm3.1-9H4.9V5c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2Z"
+                fill="#E0E0E0"
+              />
+            </svg> */}
           </label>
 
           <label className={s.formLbl}>

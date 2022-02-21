@@ -72,7 +72,8 @@ p {
   line-height: 1.5;
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 50px;
   color: #000000;
 }
 
@@ -86,6 +87,7 @@ p {
 .formLbl {
   margin-right: auto;
   margin-left: auto;
+  position: relative;
 }
 
 .formLbl:not(:last-child) {
@@ -109,32 +111,51 @@ p {
   padding-top: 5px;
   padding-left: 30px;
   margin-left: 35px;
+  position: relative;
 }
 
-/* inputLbl:-webkit-autofill,
+inputLbl:-webkit-autofill,
 inputLbl:-webkit-autofill:hover,
 inputLbl:-webkit-autofill:focus,
 inputLbl:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
-} */
+}
 
 .mail {
   background-image: url("../../images/email-icon.svg");
   background-repeat: no-repeat;
   height: 16px;
+  /* position: absolute;
+     top: 50%;
+  margin-left: 17px;
+  margin-top: 17px; */
+  background-position: left 0.5em bottom 10px;
+}
+
+::placeholder {
+  padding-left: 5px;
+  padding-bottom: 3px;
 }
 
 .password {
   background-image: url("../../images/password-icon.svg");
   background-repeat: no-repeat;
   height: 16px;
+  background-position: left 0.5em bottom 10px;
 }
 
 .name {
   background-image: url("../../images/user-icon.svg");
   background-repeat: no-repeat;
   height: 16px;
+  background-position: left 0.5em bottom 10px;
 }
+
+/* .inputIcon {
+  position: absolute;
+  left: 5px;
+  bottom: 3px;
+} */
 
 ::placeholder {
   font-family: Circe;
@@ -183,6 +204,12 @@ inputLbl:-webkit-autofill:active {
   border-color: transparent;
 }
 
+.btnRegister:hover,
+.btnRegister:focus {
+  font-weight: 700;
+  transition: background-color 500ms linear, transform 500ms ease-in-out;
+}
+
 .authLink {
   outline: none;
   text-decoration: none;
@@ -200,6 +227,7 @@ inputLbl:-webkit-autofill:active {
 }
 
 .btnLogin:hover,
+.btnLogin:focus,
 .btnLogin:active {
   font-weight: 700;
   border: 2px solid #4a56e2;
@@ -219,20 +247,24 @@ inputLbl:-webkit-autofill:active {
 
 @media screen and (min-width: 768px) {
   .mainDivForm {
-    /* height: 468px; */
+    height: 616px;
     width: 540px;
     margin-left: 114px;
     border-radius: 20px;
   }
 
+  .formLbl {
+    margin-right: auto;
+    margin-left: auto;
+  }
   .inputLbl {
     width: 410px;
   }
 
-  .btnRegister,
+  /* .btnRegister,
   .btnLogin {
     margin-bottom: 20px;
-  }
+  } */
 
   .name {
     margin-right: 24px;
