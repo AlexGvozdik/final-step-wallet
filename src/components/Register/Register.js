@@ -97,17 +97,13 @@ function RegisterForm() {
         </div>
         <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
           <label className={s.formLbl}>
-            {/* <span className={s.mail}>
-              <i className={s.mailIcon}></i>
-            </span> */}
             <input
               type="email"
               name="email"
               value={email}
-              // required
+              required
               onChange={handleChange}
               className={`${s.inputLbl} ${s.mail}`}
-              // className={s.inputLbl}
               placeholder="E-mail"
             ></input>
           </label>
@@ -124,12 +120,6 @@ function RegisterForm() {
               required
               autoComplete="off"
             ></input>
-            {/* <svg width="16" height="21" className={s.inputIcon}>
-              <path
-                d="M14 7h-1V5c0-2.76-2.24-5-5-5S3 2.24 3 5v2H2C.9 7 0 7.9 0 9v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2Zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Zm3.1-9H4.9V5c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2Z"
-                fill="#E0E0E0"
-              />
-            </svg> */}
           </label>
 
           <label className={s.formLbl}>
@@ -142,16 +132,6 @@ function RegisterForm() {
               value={password_confirmation}
               autoComplete="off"
             ></input>
-            {/* <input
-              autoComplete="off"
-              type="password"
-              name="confirmPassword"
-              value={confirmPassword}
-              required
-              onChange={handleChange}
-              className={`${s.inputLbl} ${s.password}`}
-              placeholder="Подтвердите пароль"
-            ></input> */}
             <div id="check" className={activePassword()}></div>
           </label>
 
