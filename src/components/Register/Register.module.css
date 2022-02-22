@@ -101,7 +101,7 @@ p {
 }
 
 .inputLbl {
-  width: 260px;
+  width: auto;
   border: none;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 10px;
@@ -109,7 +109,7 @@ p {
   color: #000000;
   height: 50px;
   padding-top: 5px;
-  padding-left: 30px;
+  padding-left: 50px;
   margin-left: 35px;
   position: relative;
 }
@@ -118,7 +118,7 @@ inputLbl:-webkit-autofill,
 inputLbl:-webkit-autofill:hover,
 inputLbl:-webkit-autofill:focus,
 inputLbl:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
+  transition: 5000s ease-in-out 0s;
 }
 
 .mail {
@@ -126,14 +126,6 @@ inputLbl:-webkit-autofill:active {
   background-repeat: no-repeat;
   height: 16px;
   background-position: left 0.5em bottom 10px;
-}
-
-::placeholder {
-  font-family: Circe, sans-serif;
-  font-weight: 400;
-  font-style: 18px;
-  line-height: 1.5;
-  color: #bdbdbd;
 }
 
 .password {
@@ -151,12 +143,15 @@ inputLbl:-webkit-autofill:active {
 }
 
 ::placeholder {
-  font-family: Circe;
+  font-family: Circe, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
   color: #bdbdbd;
-  padding-left: 22px;
+}
+
+.textInput {
+  margin-left: 30px;
 }
 
 .btnForm {

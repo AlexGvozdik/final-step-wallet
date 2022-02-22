@@ -1,5 +1,10 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { alert, defaults } from "@pnotify/core";
+
+defaults.styling = "material";
+defaults.icon = "material";
+defaults.delay = 1000;
 
 axios.defaults.baseURL = "https://final-step-wallet-back.herokuapp.com";
 
@@ -18,7 +23,14 @@ const register = createAsyncThunk("/auth/register", async (credentials) => {
     token.set(response.data.token);
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    alert({
+      text: error.response.data.token,
+      hide: true,
+      delay: 2000,
+      sticker: false,
+      closer: true,
+      dir1: "right",
+    });
   }
 });
 

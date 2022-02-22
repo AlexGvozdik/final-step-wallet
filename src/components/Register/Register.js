@@ -18,14 +18,14 @@ function RegisterForm() {
   const [password_confirmation, setConfirmPassword] = useState("");
 
   const schema = {
-    name: "string|min:1|max:12",
+    name: "required|string|min:1|max:12",
     email: "required|email",
     password: "required|min:6|max:12|confirmed",
     password_confirmation: "required|min:6|max:12",
   };
 
   const messages = {
-    required: "Make sure to enter email and password",
+    required: "Make sure to enter email, name and password",
     email: "Enter valid email address",
     min: "The value of name or password is too small",
     max: "The value of name or password is too large",
@@ -120,6 +120,7 @@ function RegisterForm() {
               required
               autoComplete="off"
             ></input>
+            {/* <span className={s.textInput}></span> */}
           </label>
 
           <label className={s.formLbl}>
