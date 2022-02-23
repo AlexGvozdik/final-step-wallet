@@ -5,11 +5,8 @@ import authSelectors from '../redux/auth/auth-selectors';
 export default function PublicRoute({
     restricted = false,
     navigateTo,
-    element,
-    ...routeProps
+    children,
 }) {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-    return (
-        <Route {...routeProps} element={(isLoggedIn && restricted) ? <Navigate to={navigateTo} replace/> : element } />
-    )
+    return (isLoggedIn && restricted) ? <Navigate to={navigateTo} replace/> : children 
 }

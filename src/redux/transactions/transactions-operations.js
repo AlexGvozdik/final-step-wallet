@@ -34,7 +34,7 @@ export const addTransaction = createAsyncThunk(
         return rejectWithValue();
         }
         setToken(persistedToken);
-        const { data } = await axios.post('/api/transactions/add', transaction);
+        const { data } = await axios.post('/api/transactions/expense', transaction);
         dispatch(setIsModalAddTransactionOpen(false));
         return data;
       } catch (error) {

@@ -17,36 +17,52 @@ const token = {
   },
 };
 
-const register = createAsyncThunk(
-  "/auth/register",
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post("/api/auth/register", credentials);
-      const user = data.data.user;
-
-      const login = await axios.post("/api/auth/login", user);
-      const activeUser = login.data.data.user;
-      const activeToken = login.data.data.token;
-      token.set(activeToken);
-
-      const finishedUser = {
-        token: activeToken,
-        user: activeUser,
-      };
-
-      return finishedUser;
-    } catch (error) {
-      return rejectWithValue(error);
-    }
+const register = createAsyncThunk("/auth/register", async (credentials) => {
+  try {
+    const response = await axios.post("/api/auth/register", credentials);
+    token.set(response.data.token);
+    return response.data;
+  } catch (error) {
+    alert({
+      text: error.response.data.token,
+      hide: true,
+      delay: 2000,
+      sticker: false,
+      closer: true,
+      dir1: "right",
+    });
   }
-);
+});
+// const register = createAsyncThunk(
+//   "/api/auth/register",
+//   async (credentials, { rejectWithValue }) => {
+//     try {
+//       const { data } = await axios.post("/api/auth/register", credentials);
+//       const user = data.data.user;
+
+//       // const login = await axios.post("/api/auth/login", user);
+//       const activeUser = login.data.data.user;
+//       const activeToken = login.data.data.token;
+//       token.set(activeToken);
+
+//       const finishedUser = {
+//         token: activeToken,
+//         user: activeUser,
+//       };
+
+//       return finishedUser;
+//     } catch (error) {
+//       return rejectWithValue(error);
+//     }
+//   }
+// );
 
 const login = createAsyncThunk(
-  "api/auth/login",
+  "/api/auth/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("api/auth/login", credentials);
-      token.set(data.data.token);
+      const { data } = await axios.post("/api/auth/login", credentials);
+      token.set(data.token);
       return data;
     } catch (error) {
       alert({
@@ -57,6 +73,7 @@ const login = createAsyncThunk(
         closer: true,
         dir1: "down",
       });
+      // throw new Error(error.message)
       return rejectWithValue(error);
     }
   }
@@ -64,7 +81,7 @@ const login = createAsyncThunk(
 
 const logout = createAsyncThunk("/api/auth/logout", async () => {
   try {
-    await axios.get("/auth/logout");
+    await axios.get("/api/auth/logout");
     token.unset();
   } catch (error) {
     console.log(error);

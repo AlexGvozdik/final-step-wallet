@@ -1,16 +1,16 @@
-body {
+/* body {
   margin: 0;
   font-family: "Circe", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgba(255, 255, 255, 0.4);
-}
+} */
 
 /* #root {
     backdrop-filter: blur(15px);
 } */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
@@ -106,4 +106,62 @@ button {
   body::after {
     background-position: bottom -150px left -150px;
   }
+} */
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding-right: 0 !important;
+  margin: 0;
+  height: 100%;
+
+  font-family: $font-poppins, $font-circe, sans-serif;
+  background-color: $main-background;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

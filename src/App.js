@@ -1,26 +1,45 @@
-import React from "react";
-import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import {Oval} from 'react-loader-spinner';
-import PrivateRoute from "./components/PrivateRoute";
-import PublicRoute from "./components/PublicRoute";
-import MainView from './views/MainView/MainView';
-import NotFoundView from './views/NotFoundView/NotFoundView';
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { authOperations } from "./redux/auth";
-import LoginView from './views/LoginView';
+import { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, Router } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from './redux/auth';
+
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import Spinner from './components/Spinner';
 import Header from './components/HeaderNav/HeaderNav';
 
-const MainView = lazy(() => import('./views/MainView' /* WebpackChunkName: "main-view" */)) ;
-const LoginView = lazy(() => import('./views/LoginView' /* WebpackChunkName: "login-view" */));
-const LogoutView = lazy(() => import('./views/LogoutView' /* WebpackChunkName: "logout-view" */));
-const RegisterView = lazy(() => import('./views/RegisterView' /* WebpackChunkName: "register-view" */));
-const StatisticView = lazy(() => import('./views/StatisticView' /* WebpackChunkName: "statistics-view" */));
+
+import { Oval } from 'react-loader-spinner';
+
+
+
+const MainView = lazy(() =>
+  import('./views/MainView' /* WebpackChunkName: "main-view" */),
+);
+const LoginView = lazy(() =>
+  import('./views/LoginView' /* WebpackChunkName: "login-view" */),
+);
+const LogoutView = lazy(() =>
+  import('./views/LogoutView' /* WebpackChunkName: "logout-view" */),
+);
+const RegisterView = lazy(() =>
+  import('./views/RegisterView' /* WebpackChunkName: "register-view" */),
+);
+const StatisticView = lazy(() =>
+  import('./views/StatisticView' /* WebpackChunkName: "statistics-view" */),
+);
+
+// const NotFoundView = lazy(() =>
+//   import('./views/NotFoundView' /* WebpackChunkName: "notFound-view" */),
+// );
 
 
 const App = () => {
   const dispatch = useDispatch();
+
+    const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrent,
+  );
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -28,44 +47,122 @@ const App = () => {
 
   return (
     <>
-      <MainView />
-      <div>
+      <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path="/" exact element={<Header />} />
-          <Route path="/login" element={<LoginView />} />
-        </Routes>
-      </div>
+          <Route
+            path="/"
+            exact
+            element={
+<PrivateRoute navigateTo="/login">
+                <MainView />
+</PrivateRoute>
+              }
+            />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute navigateTo="/login" restricted>
+              <RegisterView />
+            </PublicRoute>}
+            />
+          {/* <Route
+              path="/register"
+              element={<PublicRoute redirectTo="/login" restricted />}
+            >
+              <Route path="/register" element={<RegisterView />} />
+            </Route> */}
+        <Route
+          path="/login"
+          element={
+            <PublicRoute navigateTo="/" restricted>
+              <LoginView />
+            </PublicRoute>}
+            />
+
+        
+
+        <Route
+          path="/statistics"
+          element={
+            <PrivateRoute navigateTo="/login">
+              <StatisticView />
+            </PrivateRoute>}
+            />
+</Routes>
+    </Suspense>
     </>
 
-    <Suspense fallback={
-      <Oval
-        color="#4A56E2"
-        height={100}
-        width={100}
-        style={{ textAlign: 'center', marginTop: '300px' }}
-      />
-    }>
-      <Routes>
-        <PrivateRoute path="/" navigateTo={'login'} element={<MainView />} />
-
-        <PublicRoute path="login" navigateTo={'/'} restricted >
-          <LoginView />
-        </PublicRoute>
-
-        <PublicRoute path="registration" navigateTo={'/'} restricted >
-          <RegisterView />
-        </PublicRoute>
-
-        <PrivateRoute path="statistics" navigateTo={'login'} element={<StatisticView />} />
-          
-        {/* 
-        not sure if that should be a separate route or just a modal asking for confirmation
-        <PrivateRoute path="logout" navigateTo={'login'} >
-          <LogoutView />
-        </PrivateRoute> */}
-      </Routes>
-    </Suspense>
   );
 };
 
 export default App;
+{/* <Route
+          path="/"
+          element={
+            <PrivateRoute navigateTo="login">
+              <MainView />
+            </PrivateRoute>}
+            />
+        <Route
+          path="login"
+          element={
+            <PublicRoute navigateTo="/" restricted>
+              <LoginView />
+            </PublicRoute>}
+            />
+
+        
+
+        <Route
+          path="statistics"
+          element={
+            <PrivateRoute navigateTo="login">
+              <StatisticView />
+            </PrivateRoute>}
+            /> */}
+
+
+
+
+
+
+
+
+
+
+    // <>
+    //   <MainView />
+    //   <div>
+    //     <Routes>
+    //       <Route path="/" exact element={<Header />} />
+    //       <Route path="/login" element={<LoginView />} />
+    //     </Routes>
+    //   </div>
+    // </>
+
+
+
+
+    //  !isFetchingCurrentUser && (
+    //   <>
+    //     <Suspense fallback={<Spinner/>}>
+    //       <Routes>
+    //         <Route path="/" navigateTo={'login'} element={<PrivateRoute ><MainView /><PrivateRoute />}/>
+    //         <PublicRoute path="login" navigateTo={'/'} restricted > <LoginView />
+    //     </PublicRoute>
+
+    //     <PublicRoute path="registration" navigateTo={'/'} restricted >
+    //       <RegisterView />
+    //     </PublicRoute>
+
+    //     <PrivateRoute path="statistics" navigateTo={'login'} element={<StatisticView />} />
+
+    //     {/*
+    //     not sure if that should be a separate route or just a modal asking for confirmation
+    //     <PrivateRoute path="logout" navigateTo={'login'} >
+    //       <LogoutView />
+    //     </PrivateRoute> */}
+    //   </Routes>
+    //     </Suspense>
+    //   </>
+    // )

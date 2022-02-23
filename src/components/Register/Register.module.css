@@ -1,0 +1,56 @@
+.progress {
+    width: 100%;
+    margin-top: -10px;
+    background-color: #e5f1ef;
+    height: 4px;
+}
+
+.text {
+    text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+    .mainDivForm {
+        height: 616px;
+        width: 540px;
+        margin-left: 114px;
+        border-radius: 20px;
+    }
+
+    .formLbl {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .inputLbl {
+        width: 410px;
+    }
+
+    /* .btnRegister,
+  .btnLogin {
+    margin-bottom: 20px;
+  } */
+
+    .name {
+        margin-right: 24px;
+    }
+
+    .formLbl:last-child {
+        margin-bottom: 50px;
+    }
+
+    .title::before {
+        height: 40px;
+        width: 40px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .mainDivForm {
+        width: 540px;
+        margin-top: 52px;
+        margin-left: 95px;
+        z-index: 1;
+    }
+}
