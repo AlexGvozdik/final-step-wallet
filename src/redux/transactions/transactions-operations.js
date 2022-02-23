@@ -9,7 +9,7 @@ import {
   fetchTransactionsError,
 } from './transactions-actions';
 
-axios.defaults.baseURL = 'https://wallet-backend-g5.herokuapp.com/api';
+axios.defaults.baseURL = 'https://final-project-back.herokuapp.com/api';
 
 
 export const fetchTransactions = () => async dispatch => {

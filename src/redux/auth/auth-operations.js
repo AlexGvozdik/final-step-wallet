@@ -6,7 +6,7 @@ defaults.styling = 'material';
 defaults.icons = 'material';
 defaults.delay = 1000;
 
-axios.defaults.baseURL = 'https://wallet-backend-g5.herokuapp.comapi';
+axios.defaults.baseURL = 'https://final-project-back.herokuapp.com/api';
 
 const token = {
   set(token) {

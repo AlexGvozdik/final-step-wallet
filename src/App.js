@@ -1,168 +1,128 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, Router } from 'react-router-dom';
+import React, { useEffect, lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from './redux/auth';
 
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import Spinner from './components/Spinner';
-import Header from './components/HeaderNav/HeaderNav';
+
+import Container from './components/Container';
+
+// import AppBar from './components/AppBar';
 
 
-import { Oval } from 'react-loader-spinner';
+import Loader from './components/Loader';
+import Wrap from './components/Wrap';
+import HeaderBackground from './components/HeaderBackground';
+import './index.css';
 
+const StatisticView = lazy(() => import('./views/StatisticView'));
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const MainView = lazy(() => import('./views/MainView'));
+const LogoutView = lazy(() => import('./views/LogoutView'));
 
-// const NotFoundView = lazy(() =>
-//   import('./views/NotFoundView' /* WebpackChunkName: "notFound-view" */),
-// );
-
-const MainView = lazy(() =>
-  import('./views/MainView' /* WebpackChunkName: "main-view" */),
-);
-const LoginView = lazy(() =>
-  import('./views/LoginView' /* WebpackChunkName: "login-view" */),
-);
-const LogoutView = lazy(() =>
-  import('./views/LogoutView' /* WebpackChunkName: "logout-view" */),
-);
-const RegisterView = lazy(() =>
-  import('./views/RegisterView' /* WebpackChunkName: "register-view" */),
-);
-const StatisticView = lazy(() =>
-  import('./views/StatisticView' /* WebpackChunkName: "statistics-view" */),
-);
-
-const App = () => {
+function App() {
   const dispatch = useDispatch();
-
-    const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrent,
-  );
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  const isLogedIn = useSelector(authSelectors.getIsLoggedIn);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
-    <Spinner />
+    <div className={isLogedIn ? 'containerBlur' : ''}>
+      <HeaderBackground />
 
-    <>
-      <Suspense fallback={<Spinner />}>
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-<PrivateRoute navigateTo="/login">
-                <MainView />
-</PrivateRoute>
+      <Container>
+        {isFetchingCurrentUser ? (
+          <div className="mainLoader">
+            <Loader />
+          </div>
+        ) : (
+          <>
+            <Suspense
+              fallback={
+                <div className="mainLoader">
+                  <Loader />
+                </div>
               }
-            />
-        <Route
-          path="/register"
-          element={
-            <PublicRoute navigateTo="/login" restricted>
-              <RegisterView />
-            </PublicRoute>}
-            />
-          {/* <Route
-              path="/register"
-              element={<PublicRoute redirectTo="/login" restricted />}
             >
-              <Route path="/register" element={<RegisterView />} />
-            </Route> */}
-        <Route
-          path="/login"
-          element={
-            <PublicRoute navigateTo="/" restricted>
-              <LoginView />
-            </PublicRoute>}
-            />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <PrivateRoute redirectTo="/home" restricted></PrivateRoute>
+                  }
+                />
+                <Route
+                  exact
+                  path="/home"
+                  element={
+                    <PrivateRoute redirectTo="/login">
+                      <Wrap>
+                        <MainView />
+                      </Wrap>
+                    </PrivateRoute>
+                  }
+                />
 
-        
+                <Route
+                  path="/register"
+                  exact
+                  element={
+                    <PublicRoute redirectTo="/login" restricted>
+                      <RegisterView />
+                    </PublicRoute>
+                  }
+                />
 
-        <Route
-          path="/statistics"
-          element={
-            <PrivateRoute navigateTo="/login">
-              <StatisticView />
-            </PrivateRoute>}
-            />
-</Routes>
-    </Suspense>
-    </>
+                <Route
+                  path="/login"
+                  exact
+                  element={
+                    <PublicRoute redirectTo="/home" restricted>
+                      <LoginView />
+                    </PublicRoute>
+                  }
+                />
 
+                <Route
+                  path="/statistic"
+                  element={
+                    <PrivateRoute redirectTo="/login">
+                      <Wrap>
+                        <StatisticView />
+                      </Wrap>
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route
+                  path="/diagram"
+                  element={
+                    <PrivateRoute redirectTo="/login">
+                      <Wrap />
+                    </PrivateRoute>
+                  }
+                />
+
+                <Route
+                  path="/logout"
+                  element={
+                    <PrivateRoute redirectTo="/login">
+                      <LogoutView />
+                    </PrivateRoute>
+                  }
+                />
+              </Routes>
+            </Suspense>
+          </>
+        )}
+      </Container>
+    </div>
   );
-};
+}
 
 export default App;
-{/* <Route
-          path="/"
-          element={
-            <PrivateRoute navigateTo="login">
-              <MainView />
-            </PrivateRoute>}
-            />
-        <Route
-          path="login"
-          element={
-            <PublicRoute navigateTo="/" restricted>
-              <LoginView />
-            </PublicRoute>}
-            />
-
-        
-
-        <Route
-          path="statistics"
-          element={
-            <PrivateRoute navigateTo="login">
-              <StatisticView />
-            </PrivateRoute>}
-            /> */}
-
-
-
-
-
-
-
-
-
-
-    // <>
-    //   <MainView />
-    //   <div>
-    //     <Routes>
-    //       <Route path="/" exact element={<Header />} />
-    //       <Route path="/login" element={<LoginView />} />
-    //     </Routes>
-    //   </div>
-    // </>
-
-
-
-
-    //  !isFetchingCurrentUser && (
-    //   <>
-    //     <Suspense fallback={<Spinner/>}>
-    //       <Routes>
-    //         <Route path="/" navigateTo={'login'} element={<PrivateRoute ><MainView /><PrivateRoute />}/>
-    //         <PublicRoute path="login" navigateTo={'/'} restricted > <LoginView />
-    //     </PublicRoute>
-
-    //     <PublicRoute path="registration" navigateTo={'/'} restricted >
-    //       <RegisterView />
-    //     </PublicRoute>
-
-    //     <PrivateRoute path="statistics" navigateTo={'login'} element={<StatisticView />} />
-
-    //     {/*
-    //     not sure if that should be a separate route or just a modal asking for confirmation
-    //     <PrivateRoute path="logout" navigateTo={'login'} >
-    //       <LogoutView />
-    //     </PrivateRoute> */}
-    //   </Routes>
-    //     </Suspense>
-    //   </>
-    // )

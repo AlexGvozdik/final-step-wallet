@@ -6,7 +6,7 @@ import {
   fetchCategoriesError,
 } from './categories-actions';
 
-axios.defaults.baseURL = 'https://wallet-backend-g5.herokuapp.com/api';
+axios.defaults.baseURL = 'https://final-project-back.herokuapp.com/api';
 
 const fetchCategories = (month, year) => async dispatch => {
   dispatch(fetchCategoriesRequest());
