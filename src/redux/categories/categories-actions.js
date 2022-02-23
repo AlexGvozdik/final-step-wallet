@@ -1,7 +1,22 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction } from '@reduxjs/toolkit';
 
-const getCategoryRequest = createAction("category/getCategoryRequest");
-const getCategorySuccess = createAction("category/getCategorySuccess");
-const getCategoryError = createAction("category/getCategoryError");
+export const fetchCategoriesRequest = createAction(
+  'categories/fetchCategoriesRequest'
+)
 
-export { getCategoryRequest, getCategorySuccess, getCategoryError };
+export const fetchCategoriesSucces = createAction(
+  'categories/fetchCategoriesSucces'
+)
+export const fetchCategoriesError = createAction(
+  'categories/fetchCategoriesError'
+)
+
+export const addCategoryRequest = createAction(
+  'categories/addCategoryRequest'
+)
+export const addCategorySucces = createAction(
+  'categories/addCategorySucces'
+)
+export const addCategoryError = createAction(
+  'categories/addCategoryError'
+)

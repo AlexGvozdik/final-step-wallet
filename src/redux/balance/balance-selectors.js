@@ -1,11 +1,2 @@
-const getBalance = (state) => state.balance.balance;
-const getLoading = (state) => state.balance.isLoading;
-const getError = (state) => state.balance.error;
-
-const balanceSelectors = {
-  getBalance,
-  getLoading,
-  getError,
-};
-
-export default balanceSelectors;
+export const balance = state => state.balance.balance
+export const balanceLoading = state => state.balance.balanceLoading

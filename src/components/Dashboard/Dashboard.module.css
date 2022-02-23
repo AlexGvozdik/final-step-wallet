@@ -1,28 +1,128 @@
-.sideBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* margin: 13px 0 0 67px; */
+.container {
+  margin: 0 auto;
+  min-width: 320px;
+}
+
+.title {
+  text-align: center;
+  min-width: 320px;
+}
+
+.table {
+  margin: 0 auto;
+  border-spacing: 0;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+.table th,
+.table td {
+  min-height: 45px;
+  padding: 10px 20px;
+}
+
+.table td {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.tableElement {
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.table td:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+}
+
+.table td {
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .table {
+    border-collapse: collapse;
+  }
+  .table tr {
+    display: block;
+  }
+  .tableHead {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .tableElement td:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .tableElement td:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .table td {
+    display: block;
+    text-align: right;
+    background-color: #ffffff;
+    min-width: 280px;
+  }
+  .table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .sideBar {
-    display: flex;
-    margin-bottom: 20px;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    margin: 35px 0 0 43px;
-    max-width: 688px;
+  .container {
+    padding-top: 40px;
+  }
+  .tableHead {
+    background-color: #ffffff;
+  }
+  .table th:first-child {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  .table th:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  .table th,
+  .table td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .tableElement:not(:last-child) {
+    box-shadow: 0 2px 0 -1px #ffffff;
+    border-radius: 0;
+  }
+  .table td:last-child {
+    border-bottom: 1px solid #dcdcdf;
+  }
+  .table tr:last-child {
+    margin-bottom: 0;
+  }
+  .tableElement:last-child td {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .scrollDiv {
+    overflow-y: auto;
+    max-height: 600px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .sideBar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px 70px 0px 0px;
-    margin: 45px 0 0 88px;
-    max-width: 465px;
+  .container {
+    padding-top: 46px;
+    padding-left: 30px;
   }
 }

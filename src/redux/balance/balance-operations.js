@@ -1,19 +1,14 @@
-import axios from "axios";
+import { getBalance } from '../../api/balanceApi'
+import { fetchBalancePending, fetchBalanceSuccess, fetchBalanceError } from './balance-actions';
 
-import actions from "./balance-actions";
+export const fetchBalance = async dispatch => {
+  dispatch(fetchBalancePending);
 
-export const fetchBalance = () => async (dispatch) => {
-  dispatch(actions.fetchBalanceRequest());
+  const balance = await getBalance();
 
   try {
-    const {
-      data: {
-        response: { totalBalance },
-      },
-    } = await axios.get("/api/...");
-
-    dispatch(actions.fetchBalanceSuccess(totalBalance));
-  } catch (e) {
-    dispatch(actions.fetchBalanceError(e.message));
+    dispatch(fetchBalanceSuccess(balance));
+  } catch (error) {
+    dispatch(fetchBalanceError);
   }
 };

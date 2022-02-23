@@ -1,76 +1,60 @@
 {
-  "name": "final-step-wallet",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@mui/material": "^5.4.1",
-    "@mui/styled-engine-sc": "^5.4.1",
-    "@pnotify/core": "^5.2.0",
-    "@reduxjs/toolkit": "^1.7.2",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.25.0",
-    "chart.js": "^3.7.1",
-    "chokidar": "^3.5.3",
-    "classnames": "^2.3.1",
-    "formik": "^2.2.9",
-    "framer-motion": "^6.2.7",
-    "indicative": "^7.4.4",
-    "material-design-icons": "^3.0.1",
-    "modern-normalize": "^1.1.0",
-    "moment": "^2.29.1",
-    "pnotify": "^5.2.0",
-    "react": "^17.0.2",
-    "react-chartjs-2": "^4.0.1",
-    "react-datetime": "^3.1.1",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
-    "react-loader-spinner": "^5.1.2",
-    "react-minimal-pie-chart": "^8.2.0",
-    "react-modal": "^3.14.4",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
-    "react-select": "^5.2.2",
-    "react-svg": "^14.1.10",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-persist": "^6.0.0",
-    "sass": "^1.49.7",
-    "styled-components": "^5.3.3",
-    "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p",
-    "format": "npx prettier --write ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "prettier": "^2.5.1"
-  }
+    "name": "wallet",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.6.0",
+        "@emotion/styled": "^11.6.0",
+        "@mui/material": "^5.1.0",
+        "@mui/styled-engine-sc": "^5.1.0",
+        "@reduxjs/toolkit": "^1.6.2",
+        "@testing-library/jest-dom": "^5.15.0",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "axios": "^0.24.0",
+        "chokidar": "^3.5.2",
+        "indicative": "^7.4.4",
+        "material-design-icons": "^3.0.1",
+        "modern-normalize": "^1.1.0",
+        "moment": "^2.29.1",
+        "pnotify": "^5.2.0",
+        "react": "^17.0.2",
+        "react-datetime": "^3.1.1",
+        "react-dom": "^17.0.2",
+        "react-loader-spinner": "^4.0.0",
+        "react-minimal-pie-chart": "^8.2.0",
+        "react-redux": "^7.2.6",
+        "react-router-dom": "^6.0.2",
+        "react-scripts": "^3.4.4",
+        "react-svg": "^14.1.2",
+        "redux-persist": "^6.0.0",
+        "styled-components": "^5.3.3",
+        "web-vitals": "^1.1.2"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "netlify deploy -p"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

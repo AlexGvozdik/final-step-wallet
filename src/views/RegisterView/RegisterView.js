@@ -1,21 +1,13 @@
-import React from "react";
-import RegisterForm from "../../components/Register/Register";
-import s from "./Register.module.css";
+import Styles from './Register.module.css';
+import React from 'react';
+import Register from '../../components/Register/Register';
 
-const RegisterPage = () => {
+const RegisterView = () => {
   return (
-    <>
-      <div className={s.backdrop}></div>
-
-      <div className={s.bgContainer}>
-        <div className={s.bgImage}>
-          <p className={s.title}>Finance App</p>
-        </div>
-        <RegisterForm />
-      </div>
-    </>
+    <div className={Styles.container}>
+      <Register />
+    </div>
   );
 };
 
-export default RegisterPage;
-
+export default RegisterView;

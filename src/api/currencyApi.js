@@ -1,10 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-async function getCurrencyRate() {
-  const responce = await axios.get(
-    "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11"
-  );
-  return responce.data;
+const nonAuthAxios = axios.create();
+
+const supportedCurrencies = ['USD', 'EUR', 'RUR']
+
+function getCurrencyRates() {
+    return nonAuthAxios.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+        .then((response) => response.data.filter(({ ccy }) => supportedCurrencies.includes(ccy)));
 }
 
-export default getCurrencyRate;
+export { getCurrencyRates }

@@ -1,45 +1,51 @@
 import axios from 'axios';
-import { error } from '@pnotify/core';
-import '@pnotify/core/dist/PNotify.css';
-import"@pnotify/core/dist/BrightTheme.css";
-import * as PNotifyMobile from '@pnotify/mobile';
-import '@pnotify/mobile/dist/PNotifyMobile.css';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import {setIsModalAddTransactionOpen} from './transactions-actions'
+
+import {
+  addTransactionRequest,
+  addTransactionSucces,
+  addTransactionError,
+  fetchTransactionsRequest,
+  fetchTransactionsSucces,
+  fetchTransactionsError,
+} from './transactions-actions';
+
+axios.defaults.baseURL = 'https://wallet-backend-g5.herokuapp.com/api';
 
 
-axios.defaults.baseURL = 'https://final-step-wallet-back.herokuapp.com';
+export const fetchTransactions = () => async dispatch => {
+  dispatch(fetchTransactionsRequest());
+  try {
+    const { data } = await axios.post('/transactions/get');
+    const rawResponce = data.data.transactionsData
+    const sortResponce = rawResponce.reverse()
+    // const sortResponce = rawResponce.sort((first, second) => {
+    //   const days = first.day - second.day
+    //   const months = first.month - second.month
+    //   const years = first.year - second.year
 
+    //   if (days <= 0 && months <= 0 && years <= 0) {
+    //     return 1
+    //   }
+    //   return -1
+    // })
 
-const showAsyncErrorNotification = message => {
-  setTimeout(() => {
-      error({
-        text: `${message}`,
-        delay: 4000,
-        mouseReset: true
-      })
-  }, 0);
-}
-
-const setToken = token => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    dispatch(fetchTransactionsSucces(sortResponce));
+  } catch (error) {
+    console.log(error)
+    dispatch(fetchTransactionsError(error));
+  }
 };
-export const addTransaction = createAsyncThunk(
-    'transactions/add',
-    async (transaction, { getState, rejectWithValue, dispatch }) => {
-      try {
-        const state = getState();
-        const persistedToken = state.auth.token;
-        if (!persistedToken) {
-        return rejectWithValue();
-        }
-        setToken(persistedToken);
-        const { data } = await axios.post('/api/transactions/expense', transaction);
-        dispatch(setIsModalAddTransactionOpen(false));
-        return data;
-      } catch (error) {
-        showAsyncErrorNotification('Oops, something went wrong');
-        return rejectWithValue(error.message);
-      }
-    },
-  );
+
+export const addTransaction =
+  (data) => dispatch => {
+    dispatch(addTransactionRequest);
+
+    axios
+      .post('/transactions/add', data)
+      .then(responce => {
+        dispatch(addTransactionSucces(responce.data.data.transactionData))
+      })
+      .catch(error => {
+        dispatch(addTransactionError(error))
+      });
+  };

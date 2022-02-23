@@ -1,22 +1,37 @@
-import { createReducer, combineReducers } from '@reduxjs/toolkit';
-import { addTransaction } from './transactions-operations';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
 
-  const items = createReducer([], {
-    [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
-  });
+import {
+  fetchTransactionsRequest,
+  fetchTransactionsSucces,
+  fetchTransactionsError,
+  addTransactionRequest,
+  addTransactionSucces,
+  addTransactionError
+} from './transactions-actions'
 
-  const isLoading = createReducer(false, {
-    [addTransaction.pending]: () => true,
-    [addTransaction.fulfilled]: () => false,
-    [addTransaction.rejected]: () => false,
-  }); 
+const items = createReducer([], {
+  [fetchTransactionsSucces]: (_, { payload }) => payload,
+  [addTransactionSucces]: (state, { payload }) => [payload, ...state]
+})
 
-  const isModalAddTransactionOpen = createReducer(false, {
-    'transactions/setIsModalAddTransactionOpen': (_, { payload }) => payload,
-  });
+const loading = createReducer(false, {
+  [fetchTransactionsRequest]: () => true,
+  [fetchTransactionsSucces]: () => false,
+  [fetchTransactionsError]: () => false,
+  [addTransactionRequest]: () => true,
+  [addTransactionSucces]: () => false,
+  [addTransactionError]: ()=>false
+})
 
-  export const transactionsReducer = combineReducers({
-    items,
-    isLoading,
-    isModalAddTransactionOpen
-  });
+const error = createReducer(null, {
+  [fetchTransactionsError]: (_, { payload }) => payload,
+  [addTransactionError]: (_, { payload }) => payload,
+  [fetchTransactionsRequest]: () => null,
+  [addTransactionRequest]: ()=>null
+})
+
+export default combineReducers({
+  items,
+  loading,
+  error,
+});

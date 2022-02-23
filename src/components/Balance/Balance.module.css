@@ -1,60 +1,61 @@
-.wrapper {
-      height: 80px;
-     /* padding: 8px 40px 13px; */
-      min-width: 280px;
-      margin-bottom: 30px;
-    
-      background: green;
-      border-radius: 30px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: flex-start;
-    
-      
-    }
-    
-    @media screen and (min-width: 768px) {
-      .wrapper{
-           min-width: 334px;
-      margin-bottom: 0px;
-      }
-   
-    }
-  
-    @media screen and (min-width: 1280px) {
-      .wrapper{
-      min-width: 350px;
-      margin-bottom: 30px;}
-    }
+.balance {
+    padding-bottom: 13px;
+    padding-top: 8px;
+    padding-left: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 280px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 30px;
+}
 
-    .title {
-      text-align: start;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 1.5;
-      text-transform: uppercase;
-      margin: 0;
-      margin-left: 30px;
-    
-      color: #a6a6a6;
+.balanceTitle {
+    margin: 0;
+    font-family: 'Circe', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #a6a6a6;
+}
+
+.balanceValue {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.5;
+}
+
+.currencySymbol {
+    font-weight: 400;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .balance {
+        width: 335px;
+        height: 80px;
+        padding-left: 40px;
+        margin-right: 20px;
+        margin-bottom: 0px;
     }
-    
-    .text {
-      font-family: 'Poppins', sans-serif;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 30px;
-      line-height: 1.5;
-      display: flex;
-      align-items: center;
-      margin: 0;
-      margin-left: 30px;
-    
-      color: #000000;
+}
+
+@media screen and (min-width: 1280px) {
+    .balance {
+        width: 350px;
+        margin-top: 30;
+        margin-bottom: 30px;
+        margin-left: 85px;
     }
-    
-    .currency {
-      font-weight: 300;
-      margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .hidden {
+        display: none;
     }
+}

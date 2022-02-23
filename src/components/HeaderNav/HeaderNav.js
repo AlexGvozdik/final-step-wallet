@@ -1,101 +1,33 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { authOperations } from "../../redux/auth";
-import { authSelectors } from "../../redux/auth";
-import styles from "./HeaderNav.module.css";
-// import Logout from "../LogoutConfirm/LogoutConfirm";
-import ModalLogout from "../ModalLogout/ModalLogout";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
+import { NavLink } from 'react-router-dom';
+import { ReactComponent as Exitsvg } from '../../images/exit-icon.svg';
+import { ReactComponent as Logosvg } from '../../images/wallet.svg';
+import style from './HeaderNav.module.css';
 
-function Header() {
-  const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch();
-  let name = useSelector(authSelectors.getUsername);
-  if (!name) {
-    name = "Имя";
-  }
-
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const handleClickLogout = () => {
-    dispatch(authOperations.logout());
-  };
+export default function HeaderNav() {
+  const name = useSelector(authSelectors.getUsername);
 
   return (
-    <header className={styles.navigation_container}>
-      {showModal && (
-        <ModalLogout
-          toggleModal={toggleModal}
-          showModal={showModal}
-          logout={handleClickLogout}
-        />
-      )}
-      <div className={styles.navigation_row}>
-        <p className={styles.wallet}>Wallet</p>
-      </div>
-      <div className={styles.navigation_header}>
-        <p className={styles.navigation_header_title}>{name}</p>
+    <div className={style.container}>
+      <div className={style.header}>
+        <NavLink to="/home" className={style.home}>
+          <Logosvg className={style.logo__svg} />
+          <span className={style.logo}>Wallet</span>
+        </NavLink>
 
-        <span className={styles.navigation_header_span}></span>
+        <div className={style.author}>
+          <span className={style.name}>{name}</span>
 
-        <button
-          type="button"
-          className={styles.navigation_icon_button_exit}
-          onClick={toggleModal}
-        >
-          <p className={styles.navigation_title_button}>Выйти</p>
-        </button>
+          <div className={style.line}></div>
+
+          <NavLink to="/logout" className={style.button}>
+            <Exitsvg className={style.output__svg} />
+            <span className={style.output}>Выйти</span>
+          </NavLink>
+        </div>
       </div>
-    </header>
+    </div>
   );
 }
-
-export default Header;
-
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { authOperations } from "../../redux/auth";
-// import { authSelectors } from "../../redux/auth";
-// import styles from "./HeaderNav.module.css";
-// // import Logout from "../LogoutConfirm/LogoutConfirm";
-
-// function Header() {
-//   // const [showModal, setShowModal] = useState(false);
-//   const dispatch = useDispatch();
-//   let name = useSelector(authSelectors.getUsername);
-//   if (!name) {
-//     name = "Имя";
-//   }
-
-//   const handleClickLogout = () => {
-//     dispatch(authOperations.logOut());
-//   };
-
-//   // const toggleModal = () => {
-//   //   setShowModal(!showModal);
-//   // };
-
-//   return (
-//     <header className={styles.navigation_container}>
-//       <div className={styles.navigation_row}>
-//         <p className={styles.wallet}>Wallet</p>
-//       </div>
-//       <div className={styles.navigation_header}>
-//         <p className={styles.navigation_header_title}>{name}</p>
-
-//         <span className={styles.navigation_header_span}></span>
-
-//         <button
-//           type="submit"
-//           className={styles.navigation_icon_button_exit}
-//           onClick={handleClickLogout}
-//         >
-//           <p className={styles.navigation_title_button}>Выйти</p>
-//         </button>
-//       </div>
-//     </header>
-//   );
-// }
-
-// export default Header;

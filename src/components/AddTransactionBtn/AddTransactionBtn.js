@@ -1,15 +1,17 @@
-import s from './AddTransactionBtn.module.css';
-import {ReactComponent as AddIcon} from '../../images/plus-icon.svg'
-import { useDispatch } from 'react-redux';
-import { setIsModalAddTransactionOpen } from '../../redux/transactions/transactions-actions';
+import { ReactSVG } from 'react-svg';
+import svgPlus from '../../images/plus-icon.svg';
+import styles from './AddTransactionBtn.module.css';
+import React from 'react';
 
-export default function AddTransactionBtn() {
-  const { button, icon } = s;
-  const dispatch = useDispatch()
+export default function OpenTransactionBtn({ toggleModal, toggleAddTransaction }) {
+  function openAddTransaction() {
+    toggleAddTransaction()
+    toggleModal()
+  }
 
   return (
-    <button type="button" className={button} onClick={() => dispatch(setIsModalAddTransactionOpen(true))}>
-        <AddIcon className={icon} />
+    <button type="button" className={styles.btn} onClick={openAddTransaction}>
+      <ReactSVG className={styles.svgComponent} src={svgPlus} />
     </button>
   );
 }
