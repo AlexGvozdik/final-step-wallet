@@ -6,7 +6,8 @@ import { balance } from '../../redux/balance/balance-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { validate } from 'indicative/validator';
 import moment from 'moment';
-import { motion} from 'framer-motion'
+// import { motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 import { ReactSVG } from 'react-svg';
 import svgPlus from '../../images/plus-icon.svg';
 import svgMinus from '../../images/minus-icon.svg';
@@ -269,11 +270,13 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
       </div>
 
       {listActive && (
-        <motion.ul 
+        <motion.ul
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className={styles.dropDownList}>
+          
+      
           {transactionType === 'income' ? 
             (CATEGORIES_INCOME.map(category => {
               const entries = Object.entries(category)
