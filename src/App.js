@@ -12,6 +12,9 @@ import Header from './components/HeaderNav/HeaderNav';
 import { Oval } from 'react-loader-spinner';
 
 
+// const NotFoundView = lazy(() =>
+//   import('./views/NotFoundView' /* WebpackChunkName: "notFound-view" */),
+// );
 
 const MainView = lazy(() =>
   import('./views/MainView' /* WebpackChunkName: "main-view" */),
@@ -29,11 +32,6 @@ const StatisticView = lazy(() =>
   import('./views/StatisticView' /* WebpackChunkName: "statistics-view" */),
 );
 
-// const NotFoundView = lazy(() =>
-//   import('./views/NotFoundView' /* WebpackChunkName: "notFound-view" */),
-// );
-
-
 const App = () => {
   const dispatch = useDispatch();
 
@@ -46,6 +44,8 @@ const App = () => {
   }, [dispatch]);
 
   return (
+    <Spinner />
+
     <>
       <Suspense fallback={<Spinner />}>
         <Routes>
