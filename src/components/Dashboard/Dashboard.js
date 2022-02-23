@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTransactions } from '../../redux/transactions';
 import { getTransactions } from '../../redux/transactions';
 import { balance } from '../../redux/balance/balance-selectors';
+import minifyString from '../../utils/minifyString';
 
 import styles from './Dashboard.module.css';
 
@@ -15,7 +16,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     dispatch(fetchTransactions());
-  }, [dispatch, currentBalance]);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -52,7 +53,7 @@ export default function Dashboard() {
                     </td>
                     <td data-label="Тип">{el.type === true ? '+' : '-'}</td>
                     <td data-label="Категория">{el.category}</td>
-                    <td data-label="Комментарий">{el.comment}</td>
+                    <td data-label="Комментарий">{el.comment && minifyString(el.comment, 30)}</td>
                     <td
                       data-label="Сумма"
                       style={{
