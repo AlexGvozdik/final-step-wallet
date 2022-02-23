@@ -20,8 +20,8 @@ const months = [
 
 const years = [
   new Date().getFullYear().toString(),
-  (new Date().getFullYear() + 1).toString(),
-  (new Date().getFullYear() + 2).toString()
+  (new Date().getFullYear() - 1).toString(),
+  (new Date().getFullYear() - 2).toString()
 ]
 
 export default function StatisticMenu({monthClicker, yearClicker}) {

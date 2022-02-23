@@ -377,7 +377,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
             className={styles.commentField}
             maxLength={500}
             value={displayedComment} 
-            placeholder="комментарий"
+            placeholder="Комментарий"
           />
         </div>
       </form>

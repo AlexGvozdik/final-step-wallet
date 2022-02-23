@@ -13,7 +13,15 @@
     .confirmContainer {
         margin-right: auto;
         margin-left: auto;
-        width: 540px;
+        width: 510px;
+        height: 55vh;
+
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .confirmContainer {
+            height: 50vh;
     }
 }
 
@@ -22,6 +30,7 @@
 }
 
 .btn {
+    text-align: center;
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -43,6 +52,7 @@
 .btn:last-child {
     margin-top: 20px;
     color: #4a56e2;
-    border: 1px solid #4a56e2;
+    outline: 1px solid #4a56e2;
     background-color: white;
+    padding-left: 15px;
 }
