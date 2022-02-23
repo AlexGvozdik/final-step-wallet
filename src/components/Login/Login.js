@@ -126,7 +126,9 @@ export default function Login() {
                 />
               </svg>
             </label>
-
+            <span className={Styles.spanEmail}>
+                  {errors.email && touched.email && errors.email}
+                </span>
             <label className={Styles.authLabel}>
               <input
                 className={Styles.input}
@@ -148,7 +150,9 @@ export default function Login() {
                 />
               </svg>
             </label>
-
+            <span className={Styles.spanPassw}> 
+                  {errors.password && touched.password && errors.password}
+                </span>
             <button className={Styles.logBtn} type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
               вход
             </button>

@@ -3,6 +3,50 @@ p {
   margin: 0;
   padding: 0;
 }
+.spanEmail {
+  color: #ff0000;
+  position:absolute;
+  left:20px;
+  bottom:257px;
+}
+
+.spanPassw {
+  color: #ff0000;
+  position: absolute;
+  left: 20px;
+  bottom: 188px;
+}
+
+@media screen and (min-width: 768px) {
+.spanEmail {
+left:180px;
+bottom:122px;
+}
+.spanPassw {
+left:180px;
+bottom:46px;
+}
+}
+@media screen and (min-width: 1024px) {
+.spanEmail {
+left:308px;
+bottom:451px;
+}
+.spanPassw {
+left:308px;
+bottom:373px;
+}
+}
+@media screen and (min-width: 1280px) {
+.spanEmail {
+left:145px;
+bottom:255px;
+}
+.spanPassw {
+left:145px;
+bottom:180px;
+}
+}
 
 .container {
   width: 100%;
