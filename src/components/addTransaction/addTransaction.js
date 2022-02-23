@@ -13,6 +13,7 @@ import svgMinus from '../../images/minus-icon.svg';
 import svgCalendar from '../../images/calendar-icon.svg';
 import svgListIcon from '../../images/categories-list-icon.svg';
 import svgClose from '../../images/modal-close-icon.svg';
+import minifyString from '../../utils/minifyString'
 
 import styles from './styles.module.css';
 
@@ -22,12 +23,13 @@ defaults.icons = 'material';
 defaults.delay = 1000;
 
 function AddTransaction({ toggleModal, toggleAddTransaction }) {
-  const [transactionType, setTransactionType] = useState('income');
-  const [category, setCategory] = useState('Регулярный доход');
+  const [transactionType, setTransactionType] = useState('spending');
+  const [category, setCategory] = useState('Выберите категорию');
   const [listActive, setListActive] = useState(false);
   const [summ, setSumm] = useState('');
   const [date, setDate] = useState(new Date());
-  const [comment, setComment] = useState('');
+  const [displayedComment, setDisplayedComment] = useState("");
+  const [fullComment, setFullComment] = useState("");
 
   const currentBalance = useSelector(balance);
   const dispatch = useDispatch();
@@ -114,7 +116,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
       type: transactionType === 'income' ? true : false,
       category: category,
       sum: parseFloat(summ),
-      comment: comment,
+      comment: fullComment,
       balance:
         transactionType === 'income'
           ? userBalance + parseFloat(summ)
@@ -139,7 +141,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
 
     try {
       await validate(transaction, SCHEMA);
-      dispatch(addTransaction(comment ? transaction : transactionNoComment));
+      dispatch(addTransaction(fullComment ? transaction : transactionNoComment));
       closeComponent();
     } catch (error) {
       console.log(error[0].message);
@@ -147,7 +149,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   }
 
   function switchClickHandler(e) {
-    if (!e.target.checked) {
+    if (e.target.checked) {
       setTransactionType('spending');
       setCategory('Выберите категорию');
       return;
@@ -182,10 +184,11 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
     setSumm(e.target.value);
   }
 
-  function commentChange(e) {
-    const field = document.querySelector(`.${styles.commentField}`);
-    field.style.cssText = 'height:' + field.scrollHeight + 'px';
-    setComment(e.target.value);
+
+  function handleMinifyingComment() {
+    setFullComment(displayedComment);
+    const minifiedComment = minifyString(displayedComment, 42);
+    setDisplayedComment(minifiedComment);
   }
 
   function closeComponent() {
@@ -219,7 +222,8 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
     if (transactionType === 'spending') {
       const basic = styles.transTypeText;
       const active = styles.transTypeTextActive;
-      return `${basic} ${active}`;
+      const expense = styles.expense
+      return `${basic} ${active} ${expense}`;
     }
 
     return styles.transTypeText;
@@ -258,42 +262,42 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
           {/* категории для расхода */}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Основной
+              <span role='img' aria-label='emoji'>💰&ensp;</span>  Основной
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Еда
+              <span role='img' aria-label='emoji'>🍔&ensp;</span>Еда
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Авто
+              <span role='img' aria-label='emoji'>🚗&ensp;</span>  Авто
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Развитие
+              <span role='img' aria-label='emoji'>🧘‍♂️&ensp;</span>  Развитие
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Дети
+              <span role='img' aria-label='emoji'>👶&ensp;</span>  Дети
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Дом
+              <span role='img' aria-label='emoji'>🏡&ensp;</span>  Дом
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Образование
+              <span role='img' aria-label='emoji'>🎓&ensp;</span>  Образование
             </li>
           )}
           {transactionType === 'spending' && (
             <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Остальное
+              <span role='img' aria-label='emoji'>🌐&ensp;</span>  Остальное
             </li>
           )}
         </ul>
@@ -365,10 +369,14 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
         </div>
 
         <div className={styles.commentFieldContainer}>
-          <textarea
-            onChange={commentChange}
+          <input
+          type='text'
+            onChange={({target: {value}}) => setDisplayedComment(value)} 
+            onBlur={handleMinifyingComment}
+            onFocus={() => setDisplayedComment(fullComment)}
             className={styles.commentField}
-            value={comment}
+            maxLength={500}
+            value={displayedComment} 
             placeholder="Комментарий"
           />
         </div>

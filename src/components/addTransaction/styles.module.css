@@ -8,6 +8,7 @@
   width: 100%;
 }
 
+
 @media screen and (min-width: 768px) {
   .addTransContainer {
     padding-top: 40px;
@@ -82,6 +83,7 @@
 
 .form {
   padding: 0 20px;
+
 }
 
 @media screen and (min-width: 768px) {
@@ -114,6 +116,10 @@
 
 .transTypeTextActive {
   color: #24cca7;
+}
+
+.expense {
+  color: #ff6596;
 }
 
 .switchToggleContainer {
@@ -311,6 +317,10 @@
   cursor: pointer;
 }
 
+.summField::placeholder {
+  color: #bdbdbd;
+}
+
 @media screen and (min-width: 768px) {
   .summField {
     padding-left: 0;
@@ -400,6 +410,10 @@
   font-weight: 400;
 }
 
+.commentField::placeholder {
+  color:#bdbdbd;
+}
+
 @media screen and (min-width: 768px) {
   .commentField {
     min-height: 34px;
@@ -441,6 +455,7 @@
   font-weight: 400;
   background-color: #24cca7;
   color: white;
+  transition: 250ms linear;
 }
 
 @media screen and (min-width: 768px) {
@@ -462,6 +477,7 @@
   border: 1px solid #4a56e2;
   color: #4a56e2;
   background-color: transparent;
+  transition: 250ms linear;
 }
 
 @media screen and (min-width: 768px) {
@@ -469,5 +485,24 @@
     width: 300px;
   }
 }
+
+.submitButton:hover,
+.submitButton:focus,
+.cancelButton:hover,
+.cancelButton:focus {
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 250ms linear;
+}
+
+.cancelButton:hover,
+.cancelButton:focus {
+  background-color: #4a56e2;
+  color: #fff;
+  transition: 250ms linear;
+}
+
+
+
 
 /* стили для блока кнопок отправить\отмена */

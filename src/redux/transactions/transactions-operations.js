@@ -18,20 +18,8 @@ export const fetchTransactions = () => async dispatch => {
     const { data } = await axios.post('/transactions/get');
     const rawResponce = data.data.transactionsData
     const sortResponce = rawResponce.reverse()
-    // const sortResponce = rawResponce.sort((first, second) => {
-    //   const days = first.day - second.day
-    //   const months = first.month - second.month
-    //   const years = first.year - second.year
-
-    //   if (days <= 0 && months <= 0 && years <= 0) {
-    //     return 1
-    //   }
-    //   return -1
-    // })
-
     dispatch(fetchTransactionsSucces(sortResponce));
   } catch (error) {
-    console.log(error)
     dispatch(fetchTransactionsError(error));
   }
 };
@@ -39,6 +27,7 @@ export const fetchTransactions = () => async dispatch => {
 export const addTransaction =
   (data) => dispatch => {
     dispatch(addTransactionRequest);
+    console.log(data)
 
     axios
       .post('/transactions/add', data)
