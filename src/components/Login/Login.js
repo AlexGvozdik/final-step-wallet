@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { alert, defaults } from '@pnotify/core';
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 defaults.styling = 'material';
 defaults.icons = 'material';
@@ -12,37 +14,45 @@ defaults.delay = 1000;
 
 export default function Login() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  };
+  const validationsSchema = Yup.object({
+    email: Yup.string().email("Email is invalid").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 character")
+      .max(12, "Must be 12 characters or less")
+      .required("Password is required"),
+  });
 
-  const handleSubmit = e => {
-    try {
-      e.preventDefault();
-      dispatch(authOperations.login({ email, password }));
-      setEmail('');
-      setPassword('');
-    } catch (error) {
-      alert({
-        text: error[0].message,
-        hide: true,
-        delay: 2000,
-        sticker: false,
-        closer: true,
-        dir1: 'down',
-      });
-    }
-  };
+  // const handleChange = ({ target: { name, value } }) => {
+  //   switch (name) {
+  //     case 'email':
+  //       return setEmail(value);
+  //     case 'password':
+  //       return setPassword(value);
+  //     default:
+  //       return;
+  //   }
+  // };
+
+  // const handleSubmit = e => {
+  //   try {
+  //     e.preventDefault();
+  //     dispatch(authOperations.login({ email, password }));
+  //     setEmail('');
+  //     setPassword('');
+  //   } catch (error) {
+  //     alert({
+  //       text: error[0].message,
+  //       hide: true,
+  //       delay: 2000,
+  //       sticker: false,
+  //       closer: true,
+  //       dir1: 'down',
+  //     });
+  //   }
+  // };
 
   return (
     <div className={Styles.container}>
@@ -76,14 +86,38 @@ export default function Login() {
             </svg>
           </div>
 
+                  <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          validateOnBlur
+          onSubmit={({ email, password }) => {
+            dispatch(authOperations.login({ email, password }));
+          }}
+          validationSchema={validationsSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isValid,
+            dirty,
+          }) => (
           <form className={Styles.form} onSubmit={handleSubmit}>
             <label className={Styles.authLabel}>
               <input
                 className={Styles.input}
                 placeholder="E-mail"
-                onChange={handleChange}
+                // onChange={handleChange}
+                    value={values.email}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    type="email"
                 name="email"
-                value={email}
               ></input>
               <svg width="21" height="16" className={Styles.inputIcon}>
                 <path
@@ -97,10 +131,15 @@ export default function Login() {
               <input
                 className={Styles.input}
                 placeholder="Пароль"
-                onChange={handleChange}
-                name="password"
-                type="password"
-                value={password}
+                // onChange={handleChange}
+                // name="password"
+                // type="password"
+                // value={password}
+                    type="password"
+                    name="password"
+                    value={values.password}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
               ></input>
               <svg width="16" height="21" className={Styles.inputIcon}>
                 <path
@@ -110,7 +149,7 @@ export default function Login() {
               </svg>
             </label>
 
-            <button className={Styles.logBtn} type="submit">
+            <button className={Styles.logBtn} type="submit" disabled={!isValid && !dirty} onClick={handleSubmit}>
               вход
             </button>
 
@@ -119,7 +158,9 @@ export default function Login() {
                 регистрация
               </button>
             </Link>
-          </form>
+              </form>
+                      )}
+        </Formik>
         </div>
       </div>
     </div>

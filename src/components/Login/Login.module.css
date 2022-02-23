@@ -92,7 +92,11 @@ p {
   color: #4a56e2;
   border: 1px solid #4a56e2;
 }
-
+.logBtn:hover,
+.regBtn:hover {
+  background-color: #1473e0;
+    color: white;
+}
 .spanContainer {
   font-size: 0%;
   margin-top: -10px;

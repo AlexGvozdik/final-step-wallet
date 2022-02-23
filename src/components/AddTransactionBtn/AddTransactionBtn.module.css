@@ -1,5 +1,5 @@
 .btn {
-    position: sticky;
+    position: fixed;
     width: 44px;
     height: 44px;
     background-color: #24cca7;
@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 767px) {
     .btn {
-        bottom: 2%;
+        bottom: -234px;
         left: 83%;
     }
 }

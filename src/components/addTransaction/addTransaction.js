@@ -369,7 +369,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
             onChange={commentChange}
             className={styles.commentField}
             value={comment}
-            placeholder="комментарий"
+            placeholder="Комментарий"
           />
         </div>
       </form>

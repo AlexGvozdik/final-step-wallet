@@ -52,13 +52,19 @@
     border: none;
     text-decoration: none;
 }
-
+.button:hover{
+    background-color: #4a56e2;
+    border-radius:5px;
+}
 .output__svg {
     margin-top: 5px;
 }
 
 .output {
     display: none;
+}
+.output__svg:hover {
+    fill:blue;
 }
 
 @media screen and (min-width: 768px) {

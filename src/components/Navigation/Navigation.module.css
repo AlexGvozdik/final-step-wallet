@@ -23,6 +23,11 @@
     color: black;
     font-weight: bold;
 }
+.home__svg:hover,
+.statis__svg:hover,
+.curren__svg:hover {
+    fill:black;
+}
 
 .home__word,
 .statis__word {
