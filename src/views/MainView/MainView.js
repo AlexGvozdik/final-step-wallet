@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Dashboard from '../../components/Dashboard';
 import AddTransactionBtn from '../../components/AddTransactionBtn';
-import AddTransaction from '../../components/AddTransaction';
+import AddTransaction from '../../components/addTransaction';
 import Backdrop from '../../components/Backdrop';
 
 import Styles from './MainView.module.css';
