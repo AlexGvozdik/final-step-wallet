@@ -1,22 +1,21 @@
 .addTransContainer {
-  /*  position: relative; */
-  padding-top: 20px;
+   position: relative;
+  padding: 20px;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
-  padding-bottom: 40px;
+  max-width: 440px;
   width: 100%;
+  height: 100%;
 }
 
 
 @media screen and (min-width: 768px) {
   .addTransContainer {
-    padding-top: 40px;
-    padding-left: 65px;
-    padding-right: 65px;
-    padding-bottom: 60px;
-    top: 204px;
-    width: 540px;
+    padding: 40px 65px 60px;
+    max-width: 540px;
+    width: 100%;
+    height: fit-content;
     border-radius: 20px;
   }
 }
@@ -50,11 +49,12 @@
     width: auto;
     height: auto;
     cursor: pointer;
+    transition: 250ms linear;
   }
   .closeBtnBox:hover,
   .closeBtnBox:focus {
-    border-radius: 50%;
-    border: 2px solid #ff6596;
+    transform: rotate(180deg);
+    transition: 250ms linear;
   }
 }
 
@@ -209,15 +209,6 @@
   background-color: #bdbdbd;
 }
 
-.dropDownField {
-  height: 34px;
-  background-color: transparent;
-  color: #bdbdbd;
-  border: none;
-  padding-left: 20px;
-  font-size: 18px;
-}
-
 .dropDownFieldActive {
   color: black;
   font-size: 18px;
@@ -231,6 +222,7 @@
   margin: 0;
   top: calc(100% + 5px);
   width: 100%;
+  max-height: 350px;
   overflow: scroll;
   border-radius: 20px;
   backdrop-filter: blur(50px);
@@ -268,6 +260,15 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  height: 34px;
+  width: 100%;
+  background-color: transparent;
+  color: #bdbdbd;
+  border: none;
+  text-align: start;
+  outline: none;
+  padding-left: 20px;
+  font-size: 18px;
 }
 
 .dropDownIcon {
@@ -296,17 +297,9 @@
   }
 }
 
-.summFieldContainer::after {
-  content: '';
-  position: absolute;
-  display: block;
-  bottom: 0;
-  height: 1px;
-  width: 100%;
-  background-color: #bdbdbd;
-}
 
-.summField {
+.summField,
+.summFieldError {
   display: block;
   width: 100%;
   height: 34px;
@@ -314,25 +307,43 @@
   font-size: 18px;
   font-weight: 600;
   border: none;
+  border-bottom: 1px solid #bdbdbd;
   cursor: pointer;
 }
 
-.summField::placeholder {
+.summField::placeholder,
+.summFieldError::placeholder {
   color: #bdbdbd;
 }
 
+.summField:focus,
+.calendarField:focus,
+.selectedCategory:focus,
+.commentField:focus {
+  border-bottom: 2px solid #24cca7;
+  transition: 250ms linear;
+}
+.summFieldError {
+  border-bottom: 2px solid red;
+}
+
 @media screen and (min-width: 768px) {
-  .summField {
+  .summField,
+  .summFieldError {
     padding-left: 0;
     text-align: center;
   }
 }
 
-.summField:focus {
+.summField:focus,
+.summFieldError {
   outline: none;
 }
 
+
 .summField::-webkit-outer-spin-button,
+.summFieldError::-webkit-outer-spin-button,
+.summFieldError::-webkit-inner-spin-button,
 .summField::-webkit-inner-spin-button {
   -webkit-appearance: none;
   /* -moz-appearance: textfield; */
@@ -356,23 +367,14 @@
   }
 }
 
-.calendarContainer::after {
-  content: '';
-  position: absolute;
-  display: block;
-  bottom: 0;
-  height: 1px;
-  width: 100%;
-  background-color: #bdbdbd;
-}
-
 .calendarField {
   width: 100%;
   height: 34px;
-  border: 0;
+  border: none;
   padding-left: 20px;
   font-size: 18px;
   font-weight: 400;
+  border-bottom: 1px solid #bdbdbd;
   cursor: pointer;
 }
 
@@ -406,6 +408,7 @@
   min-height: 74px;
   resize: none;
   border: none;
+  border-bottom: 1px solid #bdbdbd;
   font-size: 18px;
   font-weight: 400;
 }
@@ -418,16 +421,6 @@
   .commentField {
     min-height: 34px;
   }
-}
-
-.commentFieldContainer::after {
-  content: '';
-  position: absolute;
-  display: block;
-  bottom: 0;
-  height: 1px;
-  width: 100%;
-  background-color: #bdbdbd;
 }
 
 .commentField:focus {

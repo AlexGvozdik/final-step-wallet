@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
 import Datetime from 'react-datetime';
 import 'moment/locale/ru';
 import { addTransaction } from '../../redux/transactions';
 import { balance } from '../../redux/balance/balance-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { validate } from 'indicative/validator';
-
+import moment from 'moment';
+import { motion} from 'framer-motion'
 import { ReactSVG } from 'react-svg';
 import svgPlus from '../../images/plus-icon.svg';
 import svgMinus from '../../images/minus-icon.svg';
@@ -22,6 +22,9 @@ defaults.styling = 'material';
 defaults.icons = 'material';
 defaults.delay = 1000;
 
+const CATEGORIES_EXPENSE = [{main: 'Основной', img: '💰'}, {food: 'Еда', img: '🍔'}, {car: 'Авто', img: '🚗'}, {development: 'Развитие', img: '🧘‍♂️'}, {children: 'Дети', img: '👶'}, {home: 'Дом', img: '🏡'}, {education: 'Образование', img: '🎓'}, {entertainment: 'Развлечения', img: '🎳'}, {other: 'Остальные', img: '🌐'}]
+const CATEGORIES_INCOME = [{nonRegular: 'Нерегулярный доход'}, {regular: 'Регулярный доход'}]
+
 function AddTransaction({ toggleModal, toggleAddTransaction }) {
   const [transactionType, setTransactionType] = useState('spending');
   const [category, setCategory] = useState('Выберите категорию');
@@ -29,7 +32,9 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   const [summ, setSumm] = useState('');
   const [date, setDate] = useState(new Date());
   const [displayedComment, setDisplayedComment] = useState("");
+  const [error, setError] = useState(false)
   const [fullComment, setFullComment] = useState("");
+  const [categorySelected, setCategorySelected] = useState(false);
 
   const currentBalance = useSelector(balance);
   const dispatch = useDispatch();
@@ -81,8 +86,17 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
     year: 'required|number',
   };
 
+  const yesterday = moment().subtract( 1, 'day' );
+  function valid(current) {
+    return current.isAfter( yesterday );
+}; 
+
   async function submitHandler(e) {
     e.preventDefault();
+    if (!summ) {
+      handleError()
+      return;
+    }
       const nextBalance = currentBalance - summ
 
     if (nextBalance <= 0 && transactionType === 'spending' && category !== 'Выберите категорию') {
@@ -161,10 +175,14 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   function categoryClickHandler(e) {
     setCategory(e.target.textContent);
     setListActive(!listActive);
+    setCategorySelected(true)
   }
 
-  function dateChange(e) {
-    setDate(e._d);
+  const dateChange = ({_d : newDate}) => {
+    if (!newDate) {
+      return;
+    }
+    setDate(newDate.toLocaleDateString());
   }
 
   function listOpen() {
@@ -174,6 +192,8 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   function summChange(e) {
     const number = Number(e.target.value);
     const integer = Number.isInteger(number);
+
+    error && setError(false);
 
     if (!integer) {
       const [int, float] = String(number).split('.');
@@ -229,11 +249,14 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
     return styles.transTypeText;
   }
 
+  function handleError() {
+    setError(true)
+  }
+
   function switchToggle() {
     if (transactionType === 'income') {
       return styles.switchToggleIncome;
     }
-
     return styles.switchToggleSpending;
   }
   // задача данных функции, повесить дополнительный класс по условию.
@@ -242,74 +265,39 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   const dropDownJSX = (
     <div className={styles.dropDownContainer}>
       <div className={DropMenuActiveTrigger()} onClick={listOpen}>
-        <span className={styles.selectedCategory}>{category}</span>
+        <button type='button' style={categorySelected ? {color: '#000'} : null} className={styles.selectedCategory}>{category}</button>
       </div>
 
       {listActive && (
-        <ul className={styles.dropDownList}>
-          {/* категории для доходв */}
-          {transactionType === 'income' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Регулярный доход
+        <motion.ul 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.dropDownList}>
+          {transactionType === 'income' ? 
+            (CATEGORIES_INCOME.map(category => {
+              const entries = Object.entries(category)
+              return <li key={entries[0][0]} onClick={categoryClickHandler} className={styles.dropDownItem}>
+              <span>{entries[0][1]}</span>
+            </li>}))
+          
+          : (CATEGORIES_EXPENSE.map(category => {
+              const entries = Object.entries(category)
+              return <li key={entries[0][0]} onClick={categoryClickHandler} className={styles.dropDownItem}>
+              <span role='img' aria-label='emoji'>{entries[1][1]}&ensp;</span>
+              <span>{entries[0][1]}</span>
             </li>
-          )}
-          {transactionType === 'income' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              Нерегулярный доход
-            </li>
-          )}
-
-          {/* категории для расхода */}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>💰&ensp;</span>  Основной
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>🍔&ensp;</span>Еда
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>🚗&ensp;</span>  Авто
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>🧘‍♂️&ensp;</span>  Развитие
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>👶&ensp;</span>  Дети
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>🏡&ensp;</span>  Дом
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>🎓&ensp;</span>  Образование
-            </li>
-          )}
-          {transactionType === 'spending' && (
-            <li onClick={categoryClickHandler} className={styles.dropDownItem}>
-              <span role='img' aria-label='emoji'>🌐&ensp;</span>  Остальное
-            </li>
-          )}
-        </ul>
+            }))
+          }
+        </motion.ul>
       )}
 
       <ReactSVG className={styles.dropDownIcon} src={svgListIcon} />
     </div>
   );
   // разметка для выпадающего списка
-
   return (
-    <div className={styles.addTransContainer}>
+      <div  className={styles.addTransContainer}>
       <div onClick={closeComponent} className={styles.closeBtnBox}>
         <ReactSVG className={styles.closeIcon} src={svgClose} />
       </div>
@@ -341,14 +329,15 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
         </div>
 
         {/* рендер списка по условию */}
+
         {dropDownJSX}
+
         {/* рендер списка по условию */}
 
         <div className={styles.summFieldContainer}>
           <input
-            className={styles.summField}
+            className={!error ? styles.summField : styles.summFieldError}
             onChange={summChange}
-            required
             min="0.00"
             step="0.01"
             type="number"
@@ -359,9 +348,13 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
 
         <div className={styles.calendarContainer}>
           <Datetime
+            name='date'
+            type='string'
             onChange={dateChange}
             inputProps={{ className: styles.calendarField }}
-            initialValue={date}
+            isValidDate={ valid } 
+            value={date}
+            dateFormat='DD.MM.YYYY' 
             closeOnSelect={true}
             timeFormat={false}
           />
@@ -393,7 +386,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
           Отмена
         </button>
       </div>
-    </div>
+      </div>
   );
 }
 
