@@ -1,0 +1,473 @@
+.addTransContainer {
+  /*  position: relative; */
+  padding-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding-bottom: 40px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .addTransContainer {
+    padding-top: 40px;
+    padding-left: 65px;
+    padding-right: 65px;
+    padding-bottom: 60px;
+    top: 204px;
+    width: 540px;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .addTransContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* стили кнопки закрытия окна */
+
+.closeBtnBox {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .closeBtnBox {
+    position: absolute;
+    box-sizing: border-box;
+    display: block;
+    padding: 8px;
+    opacity: 1;
+    pointer-events: all;
+    border: 2px solid #ff659600;
+    top: 10px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+  }
+  .closeBtnBox:hover,
+  .closeBtnBox:focus {
+    border-radius: 50%;
+    border: 2px solid #ff6596;
+  }
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* стили кнопки закрытия окна */
+
+/* заголовок и поле формы */
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+}
+
+.form {
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    padding: 0;
+  }
+}
+
+/* заголовок и поле формы */
+
+/* стили для переключателя расход\доход */
+
+.transTypeContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 220px;
+  height: 44px;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.transTypeText {
+  font-size: 16px;
+  font-weight: 600;
+  color: #bdbdbd;
+}
+
+.transTypeTextActive {
+  color: #24cca7;
+}
+
+.switchToggleContainer {
+  position: relative;
+  width: 80px;
+}
+
+.switchToggleBody {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  border: 1px solid #bdbdbd;
+  cursor: pointer;
+}
+
+.switchToggleIncome {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -2px;
+  transform: translateX(-4px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #24cca7;
+  pointer-events: none;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  transition: transform 0.25s ease-in-out;
+}
+
+.switchToggleSpending {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -2px;
+  transform: translateX(40px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ff6596;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+  pointer-events: none;
+  transition: transform 0.25s ease-in-out;
+}
+
+.switchToggleInput {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.switchToggleSvg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* стили для переключателя расход\доход */
+
+/* Стили для выпадающего меню */
+
+.dropDownContainer {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+  color: black;
+  cursor: pointer;
+}
+
+.dropDownContainer::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #bdbdbd;
+}
+
+.dropDownField {
+  height: 34px;
+  background-color: transparent;
+  color: #bdbdbd;
+  border: none;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.dropDownFieldActive {
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.dropDownList {
+  position: absolute;
+  padding: 0;
+  z-index: 1;
+  margin: 0;
+  top: calc(100% + 5px);
+  width: 100%;
+  overflow: scroll;
+  border-radius: 20px;
+  backdrop-filter: blur(50px);
+  background-color: rgba(247, 247, 247, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dropDownList::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.dropDownItem {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 20px;
+  height: 44px;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.dropDownItem:hover {
+  color: #ff6596;
+  background-color: rgb(255, 255, 255);
+}
+
+.selectedCategory {
+  vertical-align: middle;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dropDownIcon {
+  position: absolute;
+  pointer-events: none;
+  right: 10px;
+  top: 5px;
+  width: 18px;
+  height: 9px;
+}
+
+/*стили для выпадающего меню закончены */
+
+/* стили для суммы */
+
+.summFieldContainer {
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .summFieldContainer {
+    display: inline-block;
+    width: 190px;
+  }
+}
+
+.summFieldContainer::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #bdbdbd;
+}
+
+.summField {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .summField {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+.summField:focus {
+  outline: none;
+}
+
+.summField::-webkit-outer-spin-button,
+.summField::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  /* -moz-appearance: textfield; */
+}
+
+/* стили для суммы */
+
+/* стили для календаря */
+
+.calendarContainer {
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .calendarContainer {
+    display: inline-block;
+    margin-left: 30px;
+    width: 190px;
+  }
+}
+
+.calendarContainer::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #bdbdbd;
+}
+
+.calendarField {
+  width: 100%;
+  height: 34px;
+  border: 0;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calendarField:focus {
+  outline: none;
+}
+
+.calendarIcon {
+  position: absolute;
+  pointer-events: none;
+  right: 20px;
+  top: 5px;
+  width: 18px;
+  height: 20px;
+}
+
+/* стили для календаря */
+
+/* стили для поля комментария */
+
+.commentFieldContainer {
+  position: relative;
+  margin-top: 40px;
+}
+
+.commentField {
+  position: relative;
+  display: block;
+  padding-left: 20px;
+  width: 100%;
+  min-height: 74px;
+  resize: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .commentField {
+    min-height: 34px;
+  }
+}
+
+.commentFieldContainer::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #bdbdbd;
+}
+
+.commentField:focus {
+  outline: none;
+}
+
+/* стили для поля комментария */
+
+/* стили для блока кнопок отправить\отмена */
+
+.buttonsContainer {
+  margin-top: 40px;
+  padding: 0 10px;
+}
+
+.submitButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #24cca7;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .submitButton {
+    width: 300px;
+  }
+}
+
+.cancelButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 20px;
+  border: 1px solid #4a56e2;
+  color: #4a56e2;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .cancelButton {
+    width: 300px;
+  }
+}
+
+/* стили для блока кнопок отправить\отмена */

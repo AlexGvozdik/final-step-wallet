@@ -1,0 +1,111 @@
+.header {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.home {
+    display: flex;
+    margin-right: auto;
+    text-decoration: none;
+    align-items: center;
+}
+
+.logo__svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+}
+
+.logo {
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.author {
+    display: inline-flex;
+}
+
+.name {
+    margin-right: 10px;
+    width: 80px;
+    font-family: 'Circe', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: right;
+    color: #bdbdbd;
+}
+
+.button {
+    display: inline-flex;
+    padding: 0;
+    background-color: #ffffff;
+    border: none;
+    text-decoration: none;
+}
+
+.output__svg {
+    margin-top: 5px;
+}
+
+.output {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        padding: 0 40px;
+        height: 80px;
+    }
+    .logo {
+        margin-right: 318px;
+        font-size: 30px;
+        display: block;
+    }
+    .logo__svg {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+    }
+    .line {
+        border: 1px solid #bdbdbd;
+        height: 30px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .output {
+        display: initial;
+        margin-left: 10px;
+        font-family: Circe, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        color: #bdbdbd;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .header {
+        padding: 0 85px;
+        height: 80px;
+    }
+    .logo {
+        margin-right: auto;
+    }
+    .line {
+        border: 1px solid #bdbdbd;
+        height: 30px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}

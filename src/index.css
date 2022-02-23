@@ -74,7 +74,6 @@ button {
         background-image: url(./images/rouge-shape.svg);
         background-position: top -150px right -260px;
     }
-
     body::after {
         content: '';
         position: absolute;
@@ -93,7 +92,6 @@ button {
     body {
         background-position: top -150px right -150px;
     }
-
     body::after {
         background-position: bottom -150px left -150px;
     }

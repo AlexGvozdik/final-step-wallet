@@ -1,0 +1,61 @@
+.balance {
+    padding-bottom: 13px;
+    padding-top: 8px;
+    padding-left: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 280px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 30px;
+}
+
+.balanceTitle {
+    margin: 0;
+    font-family: 'Circe', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #a6a6a6;
+}
+
+.balanceValue {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.5;
+}
+
+.currencySymbol {
+    font-weight: 400;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .balance {
+        width: 335px;
+        height: 80px;
+        padding-left: 40px;
+        margin-right: 20px;
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .balance {
+        width: 350px;
+        margin-top: 30;
+        margin-bottom: 30px;
+        margin-left: 85px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hidden {
+        display: none;
+    }
+}

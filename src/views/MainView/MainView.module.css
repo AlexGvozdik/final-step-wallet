@@ -1,0 +1,16 @@
+.container {
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        backdrop-filter: blur(50px);
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        min-width: 730px;
+        max-width: 1080px;
+    }
+}

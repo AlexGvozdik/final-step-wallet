@@ -1,0 +1,48 @@
+.confirmContainer {
+    padding: 40px 20px;
+    width: 100%;
+    margin-top: 10vh;
+    height: 70vh;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    border: solid #e7eaf2;
+}
+
+@media screen and (min-width: 768px) {
+    .confirmContainer {
+        margin-right: auto;
+        margin-left: auto;
+        width: 540px;
+    }
+}
+
+.text {
+    font-size: 30px;
+}
+
+.btn {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px;
+    width: 150px;
+    height: 50px;
+    border: 0;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.btn:first-child {
+    margin-top: 40px;
+    color: white;
+    background-color: #ff6596;
+}
+
+.btn:last-child {
+    margin-top: 20px;
+    color: #4a56e2;
+    border: 1px solid #4a56e2;
+    background-color: white;
+}
